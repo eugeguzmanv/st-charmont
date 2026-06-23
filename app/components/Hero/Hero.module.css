@@ -1,0 +1,266 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary-bg);
+  background-image: radial-gradient(
+    circle at 50% 40%,
+    rgba(244, 237, 227, 0.35),
+    transparent 60%
+  );
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.stage {
+  --w: min(86vw, 440px);
+  --h: calc(var(--w) * 0.64);
+  width: var(--w);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---------- Envelope (visual, button) ---------- */
+.envelope {
+  position: relative;
+  width: var(--w);
+  height: var(--h);
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.hero:not(.open) .envelope {
+  animation: pulse 2.6s ease-in-out infinite;
+}
+
+/* Envelope back panel */
+.back {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg, #d8c6ac 0%, #b89c79 100%);
+  border-radius: 6px;
+  box-shadow: 0 40px 80px -30px rgba(24, 39, 38, 0.65),
+    inset 0 0 0 1px rgba(93, 42, 9, 0.18);
+  z-index: 1;
+}
+
+/* Envelope front pocket: V-notched panel */
+.front {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg, #cdb593 0%, #ad8d63 100%);
+  border-radius: 6px;
+  clip-path: polygon(0 0, 50% 48%, 100% 0, 100% 100%, 0 100%);
+  box-shadow: inset 0 0 0 1px rgba(93, 42, 9, 0.18);
+  z-index: 3;
+}
+
+/* Top flap, collapses upward to open */
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 0.7rem;
+  background: linear-gradient(165deg, #cbb290 0%, #a9895f 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transform: scaleY(1);
+  transition: transform 0.7s cubic-bezier(0.6, 0, 0.3, 1),
+    opacity 0.4s ease 0.4s;
+  z-index: 4;
+  box-shadow: inset 0 0 0 1px rgba(93, 42, 9, 0.18);
+}
+
+.open .flap {
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+.seal {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  color: var(--color-light);
+  background: var(--color-tertiary);
+  width: 2.3rem;
+  height: 2.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(24, 39, 38, 0.4);
+}
+
+/* ---------- Letter (centered in the hero when opened) ---------- */
+.letter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(90vw, 460px);
+  padding: 1.8rem 1.7rem;
+  background: var(--color-light);
+  color: var(--color-quaternary);
+  border-radius: 4px;
+  box-shadow: 0 26px 60px -24px rgba(24, 39, 38, 0.6);
+  text-align: center;
+  z-index: 6;
+  opacity: 0;
+  transform: translate(-50%, calc(-50% + 80px)) scale(0.94);
+  pointer-events: none;
+  transition: opacity 0.7s ease 0.35s,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+}
+
+.open .letter {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.letterMark {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-tertiary);
+  margin-bottom: 0.8rem;
+}
+
+.letterText {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-secondary);
+}
+
+.letterFlourish {
+  display: block;
+  margin-top: 1rem;
+  color: var(--color-tertiary);
+  font-size: 1.4rem;
+}
+
+/* ---------- Prompt ---------- */
+.prompt {
+  margin-top: 2.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  opacity: 0.75;
+  transition: opacity 0.4s ease;
+}
+
+.hero:not(.open) .prompt {
+  animation: fade 2.6s ease-in-out infinite;
+}
+
+.open .prompt {
+  opacity: 0;
+}
+
+/* ---------- Scroll cue ---------- */
+.scrollCue {
+  position: absolute;
+  bottom: 2.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease 0.7s;
+}
+
+.open .scrollCue {
+  opacity: 0.8;
+  pointer-events: auto;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 3rem;
+  background: linear-gradient(var(--color-secondary), transparent);
+  animation: drift 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  20% {
+    transform: scale(1.015) rotate(-0.6deg);
+  }
+  40% {
+    transform: scale(1.015) rotate(0.6deg);
+  }
+  60% {
+    transform: scale(1.01) rotate(0deg);
+  }
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero:not(.open) .envelope,
+  .hero:not(.open) .prompt,
+  .scrollLine {
+    animation: none;
+  }
+  .flap,
+  .letter {
+    transition-duration: 0.3s;
+  }
+}
+
+@media (max-width: 600px) {
+  .letterText {
+    font-size: 0.86rem;
+  }
+  .letterMark {
+    font-size: 1.3rem;
+  }
+}

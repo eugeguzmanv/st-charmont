@@ -1,0 +1,98 @@
+.intro {
+  background-color: var(--color-quaternary);
+  color: var(--color-light);
+  padding-block: var(--section-padding-block);
+  padding-inline: var(--section-padding-inline);
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.heading {
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.subtitle {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+  font-style: italic;
+  letter-spacing: 0.05em;
+  color: var(--color-primary-bg);
+}
+
+.lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2.6vw, 1.7rem);
+  font-style: italic;
+  color: var(--color-primary-bg);
+  max-width: 30ch;
+}
+
+.body {
+  font-size: 1.02rem;
+  color: var(--color-muted);
+  max-width: 52ch;
+}
+
+.media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
+  background-color: var(--color-secondary);
+  background-image: url("/images/Copia%20de%20StCharmont1_Vermont.png");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 40%,
+    rgba(24, 39, 38, 0.65) 100%
+  );
+}
+
+.mediaLabel {
+  position: relative;
+  z-index: 1;
+  margin: 1.4rem;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-light);
+}
+
+@media (max-width: 860px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+  .media {
+    aspect-ratio: 16 / 11;
+    order: -1;
+  }
+}

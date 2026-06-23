@@ -1,0 +1,61 @@
+.soul {
+  position: relative;
+  background-color: var(--color-quaternary);
+  color: var(--color-light);
+}
+
+.media {
+  position: relative;
+  width: 100%;
+  height: clamp(340px, 70vh, 720px);
+  background-color: var(--color-secondary);
+  background-image: linear-gradient(
+      0deg,
+      rgba(24, 39, 38, 0.55),
+      rgba(24, 39, 38, 0.1)
+    ),
+    url("/images/Screenshot%202026-06-23%20171047.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-block: var(--section-padding-block);
+  padding-inline: var(--section-padding-inline);
+}
+
+.content {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.heading {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  letter-spacing: 0.1em;
+}
+
+.subheading {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+  color: var(--color-primary-bg);
+}
+
+.body {
+  font-size: 1.05rem;
+  color: var(--color-muted);
+}
+
+.statement {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.3;
+  color: var(--color-light);
+  border-left: 2px solid var(--color-tertiary);
+  padding-left: 1.4rem;
+  margin-top: 0.6rem;
+}
