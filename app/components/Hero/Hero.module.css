@@ -6,165 +6,210 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-primary-bg);
-  background-image: radial-gradient(
-    circle at 50% 40%,
-    rgba(244, 237, 227, 0.35),
-    transparent 60%
-  );
+  background-color: #e7ded0;
+  background-image: url("/images/background.jpeg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   overflow: hidden;
   padding: 2rem;
 }
 
 .stage {
-  --w: min(86vw, 440px);
-  --h: calc(var(--w) * 0.64);
+  --w: min(90vw, 560px, 84vh);
   width: var(--w);
+  margin-top: clamp(1rem, 8vh, 4rem);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* ---------- Envelope (visual, button) ---------- */
+/* ---------- Envelope ---------- */
 .envelope {
   position: relative;
   width: var(--w);
-  height: var(--h);
+  aspect-ratio: 7 / 5;
   border: none;
   background: transparent;
   padding: 0;
   cursor: pointer;
+  overflow: visible;
+  perspective: 1300px;
 }
 
 .hero:not(.open) .envelope {
-  animation: pulse 2.6s ease-in-out infinite;
+  animation: pulse 7.8s ease-in-out infinite;
 }
 
-/* Envelope back panel */
-.back {
+/* Envelope body (back panel + bottom pocket flap) */
+.body {
   position: absolute;
   inset: 0;
-  background: linear-gradient(155deg, #d8c6ac 0%, #b89c79 100%);
-  border-radius: 6px;
-  box-shadow: 0 40px 80px -30px rgba(24, 39, 38, 0.65),
-    inset 0 0 0 1px rgba(93, 42, 9, 0.18);
+  border-radius: 5px;
+  background: linear-gradient(158deg, #efe7d8 0%, #e3d7c2 55%, #d8cbb2 100%);
+  box-shadow: 0 42px 80px -34px rgba(24, 39, 38, 0.7),
+    inset 0 0 0 1px rgba(93, 42, 9, 0.16),
+    inset 0 18px 34px -26px rgba(60, 40, 22, 0.55);
   z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
 }
 
-/* Envelope front pocket: V-notched panel */
-.front {
+/* Bottom pocket flap: apex points up to the centre, edges form the lower seams */
+.body::after {
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(155deg, #cdb593 0%, #ad8d63 100%);
-  border-radius: 6px;
-  clip-path: polygon(0 0, 50% 48%, 100% 0, 100% 100%, 0 100%);
-  box-shadow: inset 0 0 0 1px rgba(93, 42, 9, 0.18);
-  z-index: 3;
+  background: linear-gradient(195deg, #e9dfcd 0%, #dccdb4 100%);
+  clip-path: polygon(0 100%, 100% 100%, 50% 44%);
+  box-shadow: 0 -1px 0 rgba(255, 252, 245, 0.5);
+  filter: drop-shadow(0 -2px 2px rgba(60, 40, 22, 0.12));
 }
 
-/* Top flap, collapses upward to open */
+.brand {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: clamp(0.9rem, 3.2%, 1.8rem);
+  text-align: center;
+}
+
+.brandName {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 3.2vw, 1.9rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #43342a;
+}
+
+.brandSub {
+  font-family: var(--font-sans);
+  font-size: clamp(0.5rem, 1.5vw, 0.72rem);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #6f5b48;
+}
+
+/* Interior shadow that shows once the flap lifts */
+.interior {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 54%;
+  background: linear-gradient(180deg, #b29c7b 0%, #c9b896 60%, transparent 100%);
+  border-radius: 5px 5px 0 0;
+  z-index: 0;
+}
+
+/* ---------- Top flap (lifts open) ---------- */
 .flap {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 50%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 0.7rem;
-  background: linear-gradient(165deg, #cbb290 0%, #a9895f 100%);
+  height: 52%;
+  background: linear-gradient(168deg, #f1eadc 0%, #e4d8c3 100%);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   transform-origin: top center;
-  transform: scaleY(1);
-  transition: transform 0.7s cubic-bezier(0.6, 0, 0.3, 1),
-    opacity 0.4s ease 0.4s;
-  z-index: 4;
-  box-shadow: inset 0 0 0 1px rgba(93, 42, 9, 0.18);
+  transform: rotateX(0deg);
+  backface-visibility: visible;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: clamp(0.7rem, 5%, 1.6rem);
+  filter: drop-shadow(0 3px 2px rgba(60, 40, 22, 0.18));
 }
 
 .open .flap {
-  transform: scaleY(0);
-  opacity: 0;
+  animation: flapLift 0.9s cubic-bezier(0.5, 0, 0.2, 1) 0.6s forwards;
 }
 
-.seal {
+.quote {
+  max-width: 84%;
   font-family: var(--font-serif);
-  font-size: 1rem;
-  letter-spacing: 0.06em;
-  color: var(--color-light);
-  background: var(--color-tertiary);
-  width: 2.3rem;
-  height: 2.3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(24, 39, 38, 0.4);
+  font-size: clamp(0.9rem, 2.7vw, 1.55rem);
+  line-height: 1.22;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #43342a;
 }
 
-/* ---------- Letter (centered in the hero when opened) ---------- */
+.quoteAuthor {
+  margin-top: clamp(0.4rem, 1.6%, 0.9rem);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(0.8rem, 2vw, 1.15rem);
+  letter-spacing: 0.04em;
+  color: #5f4a37;
+}
+
+/* Quote is printed on the flap: fade it as the flap turns away while lifting */
+.open .quote,
+.open .quoteAuthor {
+  opacity: 0;
+  transition: opacity 0.35s ease 0.75s;
+}
+
+/* ---------- Letter (emerges and grows) ---------- */
 .letter {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: min(90vw, 460px);
-  padding: 1.8rem 1.7rem;
+  width: min(92vw, 580px);
+  padding: 2.6rem 2.4rem;
   background: var(--color-light);
   color: var(--color-quaternary);
   border-radius: 4px;
-  box-shadow: 0 26px 60px -24px rgba(24, 39, 38, 0.6);
+  box-shadow: 0 30px 70px -26px rgba(24, 39, 38, 0.65);
   text-align: center;
-  z-index: 6;
+  z-index: 7;
   opacity: 0;
-  transform: translate(-50%, calc(-50% + 80px)) scale(0.94);
+  transform: translate(-50%, 55%) scale(0.32);
   pointer-events: none;
-  transition: opacity 0.7s ease 0.35s,
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
 }
 
 .open .letter {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
+  animation: letterEmerge 1.15s cubic-bezier(0.2, 1, 0.32, 1) 1.15s forwards;
 }
 
-.letterMark {
+.letterLogo {
   display: block;
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-tertiary);
-  margin-bottom: 0.8rem;
+  width: min(68%, 340px);
+  height: auto;
+  margin: 0 auto clamp(1.4rem, 4%, 2rem);
 }
 
 .letterText {
-  font-size: 0.95rem;
-  line-height: 1.65;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, 3vw, 1.5rem);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
   color: var(--color-secondary);
-}
-
-.letterFlourish {
-  display: block;
-  margin-top: 1rem;
-  color: var(--color-tertiary);
-  font-size: 1.4rem;
 }
 
 /* ---------- Prompt ---------- */
 .prompt {
-  margin-top: 2.4rem;
+  margin-top: 2.6rem;
   font-family: var(--font-sans);
   font-size: 0.78rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--color-secondary);
-  opacity: 0.75;
+  opacity: 0.78;
   transition: opacity 0.4s ease;
 }
 
 .hero:not(.open) .prompt {
-  animation: fade 2.6s ease-in-out infinite;
+  animation: fade 2.8s ease-in-out infinite;
 }
 
 .open .prompt {
@@ -174,51 +219,104 @@
 /* ---------- Scroll cue ---------- */
 .scrollCue {
   position: absolute;
-  bottom: 2.4rem;
+  bottom: 2.2rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.7rem;
+  padding: 0.6rem 1.2rem;
   border: none;
   background: transparent;
   cursor: pointer;
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--color-secondary);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.8s ease 0.7s;
+  transition: opacity 0.8s ease 2.2s;
 }
 
 .open .scrollCue {
-  opacity: 0.8;
+  opacity: 1;
   pointer-events: auto;
 }
 
-.scrollLine {
-  width: 1px;
-  height: 3rem;
-  background: linear-gradient(var(--color-secondary), transparent);
-  animation: drift 2s ease-in-out infinite;
+.chevron {
+  width: 16px;
+  height: 16px;
+  border-right: 3px solid var(--color-tertiary);
+  border-bottom: 3px solid var(--color-tertiary);
+  transform: rotate(45deg);
+  animation: chevronWave 2.6s ease-in-out infinite;
+}
+
+.chevron + .chevron {
+  margin-top: -7px;
+}
+
+.chevron:nth-child(1) {
+  opacity: 0.85;
+}
+
+.chevron:nth-child(2) {
+  opacity: 0.55;
+  animation-delay: 0.16s;
+}
+
+.chevron:nth-child(3) {
+  opacity: 0.3;
+  animation-delay: 0.32s;
+}
+
+.scrollCue:hover .chevron {
+  opacity: 1;
+  animation-duration: 0.8s;
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes flapLift {
+  0% {
+    transform: rotateX(0deg);
+  }
+  55% {
+    transform: rotateX(-105deg);
+  }
+  100% {
+    transform: rotateX(-152deg);
+  }
+}
+
+@keyframes letterEmerge {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 55%) scale(0.32);
+  }
+  22% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 @keyframes pulse {
   0%,
   100% {
-    transform: scale(1) rotate(0deg);
+    transform: translateX(0) rotate(0deg) scale(1);
   }
-  20% {
-    transform: scale(1.015) rotate(-0.6deg);
+  10% {
+    transform: translateX(-6px) rotate(-2deg) scale(1.025);
+  }
+  25% {
+    transform: translateX(6px) rotate(2deg) scale(1.025);
   }
   40% {
-    transform: scale(1.015) rotate(0.6deg);
+    transform: translateX(-5px) rotate(-1.5deg) scale(1.02);
   }
-  60% {
-    transform: scale(1.01) rotate(0deg);
+  55% {
+    transform: translateX(4px) rotate(1.2deg) scale(1.015);
+  }
+  70% {
+    transform: translateX(-2px) rotate(-0.5deg) scale(1.01);
   }
 }
 
@@ -232,35 +330,33 @@
   }
 }
 
-@keyframes drift {
+@keyframes chevronWave {
   0%,
   100% {
-    transform: translateY(0);
-    opacity: 0.3;
+    transform: rotate(45deg) translate(0, 0);
   }
   50% {
-    transform: translateY(6px);
-    opacity: 0.9;
+    transform: rotate(45deg) translate(3px, 3px);
   }
 }
 
+/* ---------- Responsive / motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .hero:not(.open) .envelope,
   .hero:not(.open) .prompt,
-  .scrollLine {
+  .chevron {
     animation: none;
   }
-  .flap,
-  .letter {
-    transition-duration: 0.3s;
+  .open .flap {
+    animation: none;
+    opacity: 0;
   }
-}
-
-@media (max-width: 600px) {
-  .letterText {
-    font-size: 0.86rem;
+  .open .letter {
+    animation: none;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
-  .letterMark {
-    font-size: 1.3rem;
+  .scrollCue {
+    transition-delay: 0.4s;
   }
 }

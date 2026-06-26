@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import styles from "./Hero.module.css";
+import WaxSeal from "../WaxSeal/WaxSeal";
 
 export default function Hero() {
   const [open, setOpen] = useState(false);
@@ -32,20 +34,41 @@ export default function Hero() {
           aria-label="Abrir la invitacion"
           aria-expanded={open}
         >
-          <span className={styles.back} aria-hidden="true" />
-          <span className={styles.front} aria-hidden="true" />
-          <span className={styles.flap} aria-hidden="true">
-            <span className={styles.seal}>SC</span>
+          <span className={styles.body} aria-hidden="true">
+            <span className={styles.brand}>
+              <span className={styles.brandName}>St. Charmont</span>
+              <span className={styles.brandSub}>Hotel Residences &amp; Spa</span>
+            </span>
           </span>
+
+          <span className={styles.interior} aria-hidden="true" />
+
+          <span className={styles.flap} aria-hidden="true">
+            <span className={styles.quote}>
+              La paz no se busca,
+              <br />
+              se encuentra dentro&hellip;
+            </span>
+            <span className={styles.quoteAuthor}>&mdash; Omar Salom&oacute;n</span>
+          </span>
+
+          <WaxSeal open={open} />
         </button>
 
         <div className={styles.letter} aria-hidden={!open}>
-          <span className={styles.letterMark}>St. Charmont</span>
+          <Image
+            src="/images/logo.png"
+            alt="St. Charmont"
+            width={1753}
+            height={1112}
+            sizes="(max-width: 600px) 68vw, 340px"
+            className={styles.letterLogo}
+            priority
+          />
           <p className={styles.letterText}>
-            Tiene el honor de invitarle a descubrir una nueva expresion del
-            lujo, el bienestar y el legado en el corazon de Yucatan.
+            Pensado exclusivamente para quienes valoran los detalles que
+            trascienden con el tiempo.
           </p>
-          <span className={styles.letterFlourish}>&mdash;</span>
         </div>
 
         <p className={styles.prompt}>Toca para abrir</p>
@@ -55,10 +78,11 @@ export default function Hero() {
         type="button"
         className={styles.scrollCue}
         onClick={handleScroll}
-        aria-label="Continuar"
+        aria-label="Descubrir"
       >
-        <span>Descubrir</span>
-        <span className={styles.scrollLine} aria-hidden="true" />
+        <span className={styles.chevron} aria-hidden="true" />
+        <span className={styles.chevron} aria-hidden="true" />
+        <span className={styles.chevron} aria-hidden="true" />
       </button>
     </section>
   );

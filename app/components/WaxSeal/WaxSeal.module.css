@@ -1,0 +1,54 @@
+.seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 17%;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  transform-origin: 50% 22%;
+  z-index: 6;
+  filter: drop-shadow(0 7px 9px rgba(24, 39, 38, 0.45));
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* The seal peels away from its top edge, lifts, tilts and falls off */
+.peel {
+  animation: sealPeel 1s cubic-bezier(0.55, 0.06, 0.68, 0.19) forwards;
+}
+
+@keyframes sealPeel {
+  0% {
+    transform: translate(-50%, -50%) perspective(520px) rotateX(0deg)
+      rotateZ(0deg);
+    opacity: 1;
+  }
+  22% {
+    transform: translate(-50%, -54%) perspective(520px) rotateX(34deg)
+      rotateZ(-4deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-54%, -72%) perspective(520px) rotateX(58deg)
+      rotateZ(-13deg) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-78%, -190%) perspective(520px) rotateX(76deg)
+      rotateZ(-34deg) scale(0.82);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .peel {
+    animation: none;
+    opacity: 0;
+  }
+}
