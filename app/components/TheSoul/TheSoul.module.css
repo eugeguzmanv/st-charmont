@@ -9,14 +9,22 @@
   width: 100%;
   height: clamp(340px, 70vh, 720px);
   background-color: var(--color-secondary);
-  background-image: linear-gradient(
-      0deg,
-      rgba(24, 39, 38, 0.55),
-      rgba(24, 39, 38, 0.1)
-    ),
-    url("/images/Screenshot%202026-06-23%20171047.png");
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
+}
+
+.mediaImg {
+  object-fit: cover;
+}
+
+.media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(24, 39, 38, 0.55),
+    rgba(24, 39, 38, 0.1)
+  );
 }
 
 .inner {

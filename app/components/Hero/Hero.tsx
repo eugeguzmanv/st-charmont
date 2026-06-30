@@ -26,6 +26,14 @@ export default function Hero() {
       className={`${styles.hero} ${open ? styles.open : ""}`}
       aria-label="Bienvenida"
     >
+      <Image
+        src="/images/background.jpeg"
+        alt=""
+        fill
+        sizes="100vw"
+        priority
+        className={styles.background}
+      />
       <div className={styles.stage}>
         <button
           type="button"

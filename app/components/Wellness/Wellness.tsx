@@ -1,14 +1,19 @@
+import Image from "next/image";
 import styles from "./Wellness.module.css";
 
 export default function Wellness() {
   return (
     <section className={styles.wellness}>
       <div className={styles.inner}>
-        <div
-          className={styles.media}
-          role="img"
-          aria-label="Espacio de bienestar en St. Charmont"
-        />
+        <div className={styles.media}>
+          <Image
+            src="/images/Copia de STCHARMONT_MURO GRABADO.png"
+            alt="Espacio de bienestar en St. Charmont"
+            fill
+            sizes="(max-width: 860px) 100vw, 50vw"
+            className={styles.mediaImg}
+          />
+        </div>
         <div className={styles.content}>
           <span className={styles.kicker}>04</span>
           <h2 className={styles.heading}>WELLNESS BY DESIGN</h2>

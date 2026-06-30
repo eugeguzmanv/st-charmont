@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./Hospitality.module.css";
 
 export default function Hospitality() {
@@ -16,11 +17,15 @@ export default function Hospitality() {
             patrimonio de la hacienda.
           </p>
         </div>
-        <div
-          className={styles.media}
-          role="img"
-          aria-label="Hotel de lujo de St. Charmont"
-        />
+        <div className={styles.media}>
+          <Image
+            src="/images/water.png"
+            alt="Hotel de lujo de St. Charmont"
+            fill
+            sizes="(max-width: 860px) 100vw, 50vw"
+            className={styles.mediaImg}
+          />
+        </div>
       </div>
     </section>
   );

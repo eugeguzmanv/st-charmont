@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./Location.module.css";
 
 export default function Location() {
@@ -17,24 +18,15 @@ export default function Location() {
           </p>
         </div>
 
-        <div
-          className={styles.map}
-          role="img"
-          aria-label="Mapa estilizado de la ubicacion de St. Charmont en Yucatan"
-        >
-          <span className={`${styles.pin} ${styles.pinMerida}`}>
-            <span className={styles.pinDot} />
-            Merida
-          </span>
-          <span className={`${styles.pin} ${styles.pinCharmont}`}>
-            <span className={`${styles.pinDot} ${styles.pinDotMain}`} />
-            St. Charmont
-          </span>
-          <span className={`${styles.pin} ${styles.pinCoast}`}>
-            <span className={styles.pinDot} />
-            La Costa
-          </span>
-          <span className={styles.route} aria-hidden="true" />
+        <div className={styles.map}>
+          <Image
+            src="/images/map.png"
+            alt="Mapa de la ubicacion de St. Charmont en Yucatan"
+            width={819}
+            height={1024}
+            sizes="(max-width: 860px) 90vw, 50vw"
+            className={styles.mapImg}
+          />
         </div>
       </div>
     </section>

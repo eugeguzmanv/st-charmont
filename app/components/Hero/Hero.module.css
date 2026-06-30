@@ -7,16 +7,20 @@
   align-items: center;
   justify-content: center;
   background-color: #e7ded0;
-  background-image: url("/images/background.jpeg");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
   overflow: hidden;
   padding: 2rem;
 }
 
+.background {
+  object-fit: cover;
+  object-position: center center;
+  z-index: 0;
+}
+
 .stage {
   --w: min(90vw, 560px, 84vh);
+  position: relative;
+  z-index: 1;
   width: var(--w);
   margin-top: clamp(1rem, 8vh, 4rem);
   display: flex;
@@ -219,6 +223,7 @@
 /* ---------- Scroll cue ---------- */
 .scrollCue {
   position: absolute;
+  z-index: 2;
   bottom: 2.2rem;
   left: 50%;
   transform: translateX(-50%);

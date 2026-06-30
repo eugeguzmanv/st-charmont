@@ -15,14 +15,17 @@
 }
 
 .media {
+  position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
   border-radius: 4px;
+  overflow: hidden;
   background-color: var(--color-quaternary);
-  background-image: url("/images/Copia%20de%20STCHARMONT_MURO%20GRABADO.png");
-  background-size: cover;
-  background-position: center;
   box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.7);
+}
+
+.mediaImg {
+  object-fit: cover;
 }
 
 .content {

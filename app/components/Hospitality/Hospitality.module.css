@@ -46,14 +46,17 @@
 }
 
 .media {
+  position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
   border-radius: 4px;
+  overflow: hidden;
   background-color: var(--color-secondary);
-  background-image: url("/images/STCHARMONT_IA6.png");
-  background-size: cover;
-  background-position: center;
   box-shadow: 0 40px 80px -40px rgba(24, 39, 38, 0.55);
+}
+
+.mediaImg {
+  object-fit: cover;
 }
 
 @media (max-width: 860px) {

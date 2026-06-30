@@ -45,111 +45,17 @@
   max-width: 52ch;
 }
 
-/* Stylized map placeholder */
 .map {
-  position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
   border-radius: 4px;
-  background-color: var(--color-secondary);
-  background-image: radial-gradient(
-      circle at 30% 30%,
-      rgba(193, 170, 141, 0.18),
-      transparent 55%
-    ),
-    radial-gradient(circle at 75% 70%, rgba(93, 42, 9, 0.25), transparent 55%);
-  border: 1px solid rgba(193, 170, 141, 0.25);
   overflow: hidden;
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.55);
 }
 
-.map::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(
-      rgba(193, 170, 141, 0.08) 1px,
-      transparent 1px
-    ),
-    linear-gradient(90deg, rgba(193, 170, 141, 0.08) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
-.pin {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-light);
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
-}
-
-.pinDot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--color-primary-bg);
-  box-shadow: 0 0 0 4px rgba(193, 170, 141, 0.25);
-}
-
-.pinDotMain {
-  width: 16px;
-  height: 16px;
-  background: var(--color-tertiary);
-  box-shadow: 0 0 0 6px rgba(93, 42, 9, 0.35);
-  animation: ping 2.4s ease-out infinite;
-}
-
-.pinMerida {
-  top: 28%;
-  left: 26%;
-}
-
-.pinCharmont {
-  top: 52%;
-  left: 52%;
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  letter-spacing: 0.12em;
-  color: var(--color-primary-bg);
-}
-
-.pinCoast {
-  top: 74%;
-  left: 76%;
-}
-
-.route {
-  position: absolute;
-  top: 28%;
-  left: 26%;
-  width: 50%;
-  height: 46%;
-  border-bottom: 1px dashed rgba(193, 170, 141, 0.5);
-  border-right: 1px dashed rgba(193, 170, 141, 0.5);
-  border-bottom-right-radius: 60%;
-}
-
-@keyframes ping {
-  0% {
-    box-shadow: 0 0 0 0 rgba(93, 42, 9, 0.5);
-  }
-  70% {
-    box-shadow: 0 0 0 16px rgba(93, 42, 9, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(93, 42, 9, 0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pinDotMain {
-    animation: none;
-  }
+.mapImg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 @media (max-width: 860px) {

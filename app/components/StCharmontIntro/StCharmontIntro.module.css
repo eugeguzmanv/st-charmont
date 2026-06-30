@@ -55,14 +55,15 @@
   aspect-ratio: 4 / 5;
   border-radius: 4px;
   background-color: var(--color-secondary);
-  background-image: url("/images/Copia%20de%20StCharmont1_Vermont.png");
-  background-size: cover;
-  background-position: center;
   box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
   overflow: hidden;
+}
+
+.mediaImg {
+  object-fit: cover;
 }
 
 .media::after {

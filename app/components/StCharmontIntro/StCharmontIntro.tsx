@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./StCharmontIntro.module.css";
 
 export default function StCharmontIntro() {
@@ -20,11 +21,14 @@ export default function StCharmontIntro() {
           </p>
         </div>
 
-        <div
-          className={styles.media}
-          role="img"
-          aria-label="Hacienda historica de St. Charmont"
-        >
+        <div className={styles.media}>
+          <Image
+            src="/images/Copia de StCharmont1_Vermont.png"
+            alt="Hacienda historica de St. Charmont"
+            fill
+            sizes="(max-width: 860px) 100vw, 50vw"
+            className={styles.mediaImg}
+          />
           <span className={styles.mediaLabel}>St. Charmont</span>
         </div>
       </div>
