@@ -6,7 +6,7 @@ export default function TheSoul() {
     <section className={styles.soul}>
       <div className={styles.media}>
         <Image
-          src="/images/Screenshot 2026-06-23 171047.png"
+          src="/images/casa.png"
           alt="Hacienda historica restaurada de St. Charmont"
           fill
           sizes="100vw"
@@ -27,6 +27,15 @@ export default function TheSoul() {
           <p className={styles.statement}>
             No es un elemento del proyecto. Es su razon de existir.
           </p>
+        </div>
+        <div className={styles.sideMedia}>
+          <Image
+            src="/images/soul2.jpeg"
+            alt="Interior de lujo en St. Charmont"
+            fill
+            sizes="(max-width: 860px) 100vw, 50vw"
+            className={styles.sideMediaImg}
+          />
         </div>
       </div>
     </section>

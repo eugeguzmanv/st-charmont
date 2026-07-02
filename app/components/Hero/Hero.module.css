@@ -167,8 +167,8 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: min(92vw, 580px);
-  padding: 2.6rem 2.4rem;
+  width: min(94vw, 656px);
+  padding: 1.5rem;
   background: var(--color-light);
   color: var(--color-quaternary);
   border-radius: 4px;
@@ -186,9 +186,9 @@
 
 .letterLogo {
   display: block;
-  width: min(68%, 340px);
+  width: min(92%, 560px);
   height: auto;
-  margin: 0 auto clamp(1.4rem, 4%, 2rem);
+  margin: 0 auto clamp(1.2rem, 3.5%, 1.8rem);
 }
 
 .letterText {

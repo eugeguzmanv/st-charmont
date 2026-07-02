@@ -65,11 +65,11 @@ export default function Hero() {
 
         <div className={styles.letter} aria-hidden={!open}>
           <Image
-            src="/images/logo.png"
+            src="/images/logo_hero.png"
             alt="St. Charmont"
-            width={1753}
-            height={1112}
-            sizes="(max-width: 600px) 68vw, 340px"
+            width={1920}
+            height={1080}
+            sizes="(max-width: 800px) 85vw, 560px"
             className={styles.letterLogo}
             priority
           />

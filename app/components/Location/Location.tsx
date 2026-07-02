@@ -20,7 +20,7 @@ export default function Location() {
 
         <div className={styles.map}>
           <Image
-            src="/images/map.png"
+            src="/images/CROQUIS.png"
             alt="Mapa de la ubicacion de St. Charmont en Yucatan"
             width={819}
             height={1024}
