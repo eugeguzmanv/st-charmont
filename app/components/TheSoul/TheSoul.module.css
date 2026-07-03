@@ -33,7 +33,7 @@
   padding-block: var(--section-padding-block);
   padding-inline: var(--section-padding-inline);
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 0.85fr 1.15fr;
   gap: clamp(2.5rem, 6vw, 5rem);
   align-items: center;
 }
@@ -47,7 +47,8 @@
 .sideMedia {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 4;
+  min-height: clamp(360px, 50vh, 560px);
   border-radius: 4px;
   overflow: hidden;
   background-color: var(--color-secondary);
