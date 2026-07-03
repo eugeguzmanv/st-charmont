@@ -14,9 +14,11 @@ export default function TheSoul() {
         />
       </div>
       <div className={styles.inner}>
-        <div className={styles.content}>
+        <div className={styles.intro}>
           <h2 className={styles.heading}>EL ALMA DE ST. CHARMONT</h2>
           <p className={styles.subheading}>La Hacienda</p>
+        </div>
+        <div className={styles.details}>
           <p className={styles.body}>
             En el corazon del proyecto se encuentra una hacienda historica
             cuidadosamente restaurada para preservar su esencia y proyectarla
@@ -28,13 +30,14 @@ export default function TheSoul() {
             No es un elemento del proyecto. Es su razon de existir.
           </p>
         </div>
-        <div className={styles.sideMedia}>
+        <div className={styles.bottomMedia}>
           <Image
             src="/images/soul2.jpeg"
             alt="Interior de lujo en St. Charmont"
-            fill
-            sizes="(max-width: 860px) 100vw, 50vw"
-            className={styles.sideMediaImg}
+            width={1024}
+            height={573}
+            sizes="100vw"
+            className={styles.bottomMediaImg}
           />
         </div>
       </div>
