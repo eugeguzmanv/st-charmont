@@ -1,52 +1,45 @@
-"use client";
-
-import { useState, type FormEvent } from "react";
+import Image from "next/image";
 import styles from "./FooterCTA.module.css";
 
 export default function FooterCTA() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!email.trim()) return;
-    setSubmitted(true);
-  };
-
   return (
-    <footer className={styles.footer}>
+    <footer id="contacto" className={styles.footer}>
       <div className={styles.inner}>
-        <span className={styles.kicker}>Cierre</span>
         <h2 className={styles.heading}>
           Bienvenido a una nueva expresion del lujo.
         </h2>
 
-        {submitted ? (
-          <p className={styles.thanks}>
-            Gracias. Hemos recibido tu interes y te contactaremos con
-            informacion exclusiva sobre el lanzamiento.
-          </p>
-        ) : (
-          <>
-            <p className={styles.invite}>
-              Solicita informacion exclusiva sobre el lanzamiento.
-            </p>
-            <form className={styles.form} onSubmit={handleSubmit} noValidate>
-              <input
-                type="email"
-                className={styles.input}
-                placeholder="Tu correo electronico"
-                aria-label="Correo electronico"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                required
-              />
-              <button type="submit" className={styles.button}>
-                Solicitar acceso
-              </button>
-            </form>
-          </>
-        )}
+        <p className={styles.invite}>
+          Solicita informacion exclusiva sobre el lanzamiento.
+        </p>
+
+        <div className={styles.actions}>
+          <a
+            href="https://wa.me/529991814673"
+            className={styles.button}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp
+          </a>
+          <a
+            href="mailto:info@stcharmont.com"
+            className={`${styles.button} ${styles.buttonSecondary}`}
+          >
+            E-Mail
+          </a>
+        </div>
+
+        <div className={styles.media}>
+          <Image
+            src="/images/soul2.jpeg"
+            alt="Interior de lujo en St. Charmont"
+            width={1024}
+            height={573}
+            sizes="(max-width: 720px) 90vw, 680px"
+            className={styles.mediaImg}
+          />
+        </div>
 
         <div className={styles.brand}>
           <span className={styles.brandName}>St. Charmont</span>

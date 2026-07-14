@@ -1,0 +1,139 @@
+.carousel {
+  position: relative;
+  width: min(100%, 380px);
+  justify-self: center;
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--color-secondary);
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.7);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  pointer-events: none;
+}
+
+.slide:first-child {
+  position: relative;
+  inset: auto;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  width: 2.4rem;
+  height: 2.4rem;
+  border: none;
+  border-radius: 50%;
+  background: rgba(244, 237, 227, 0.88);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.nav:hover {
+  background: var(--color-light);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.nav span {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2px solid var(--color-tertiary);
+  border-bottom: 2px solid var(--color-tertiary);
+}
+
+.prev {
+  left: 0.7rem;
+}
+
+.prev span {
+  transform: rotate(135deg) translate(-1px, -1px);
+}
+
+.next {
+  right: 0.7rem;
+}
+
+.next span {
+  transform: rotate(-45deg) translate(-1px, -1px);
+}
+
+.dots {
+  position: absolute;
+  left: 50%;
+  bottom: 0.85rem;
+  z-index: 2;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  max-width: calc(100% - 2rem);
+}
+
+.dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(244, 237, 227, 0.45);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.dot:hover {
+  background: rgba(244, 237, 227, 0.8);
+}
+
+.dotActive {
+  background: var(--color-primary-bg);
+  transform: scale(1.25);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide {
+    transition: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .carousel {
+    width: min(100%, 320px);
+  }
+}

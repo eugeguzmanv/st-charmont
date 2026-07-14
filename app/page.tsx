@@ -7,6 +7,7 @@ import Hospitality from "./components/Hospitality/Hospitality";
 import Location from "./components/Location/Location";
 import Legacy from "./components/Legacy/Legacy";
 import FooterCTA from "./components/FooterCTA/FooterCTA";
+import ContactPopup from "./components/ContactPopup/ContactPopup";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Location />
       <Legacy />
       <FooterCTA />
+      <ContactPopup />
     </main>
   );
 }

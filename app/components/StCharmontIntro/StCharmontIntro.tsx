@@ -23,7 +23,7 @@ export default function StCharmontIntro() {
 
         <div className={styles.media}>
           <Image
-            src="/images/Copia de StCharmont1_Vermont.png"
+            src="/images/STCHARMONT_MANIJA.png"
             alt="Hacienda historica de St. Charmont"
             fill
             sizes="(max-width: 860px) 100vw, 50vw"

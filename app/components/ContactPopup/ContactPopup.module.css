@@ -1,0 +1,117 @@
+.popup {
+  position: fixed;
+  right: clamp(1rem, 3vw, 1.75rem);
+  bottom: clamp(1rem, 3vw, 1.75rem);
+  z-index: 40;
+  width: min(calc(100vw - 2rem), 360px);
+  padding: 1.15rem 1.2rem 1.2rem;
+  border: 1px solid rgba(193, 170, 141, 0.35);
+  border-radius: 6px;
+  background: rgba(24, 39, 38, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.65);
+  color: var(--color-light);
+  animation: slideIn 0.45s ease both;
+}
+
+.close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.45rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: none;
+  background: transparent;
+  color: var(--color-primary-bg);
+  font-size: 1.45rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.close:hover {
+  color: var(--color-light);
+  transform: scale(1.08);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+  padding-right: 0.9rem;
+}
+
+.seal {
+  display: block;
+  width: 72px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: var(--color-light);
+}
+
+.body {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(193, 170, 141, 0.55);
+  text-underline-offset: 0.18em;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--color-primary-bg);
+  text-decoration-color: var(--color-primary-bg);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .popup {
+    animation: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup {
+    width: min(calc(100vw - 1.5rem), 320px);
+  }
+
+  .seal {
+    width: 58px;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+}

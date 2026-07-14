@@ -59,6 +59,124 @@
   max-width: 54ch;
 }
 
+.insights {
+  max-width: var(--max-width);
+  margin: clamp(3.5rem, 8vw, 5.5rem) auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.insightTitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--color-primary-bg);
+  letter-spacing: 0.02em;
+}
+
+.insightText {
+  font-size: 1.05rem;
+  color: var(--color-muted);
+  max-width: 58ch;
+}
+
+.articles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  margin-top: 1rem;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(193, 170, 141, 0.28);
+  border-radius: 4px;
+  background: rgba(24, 39, 38, 0.45);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.article:hover {
+  border-color: rgba(193, 170, 141, 0.6);
+  background: rgba(24, 39, 38, 0.7);
+  transform: translateY(-3px);
+}
+
+.articlePreview {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--color-quaternary);
+}
+
+.articleImage {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.articleOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      160deg,
+      rgba(193, 170, 141, 0.28) 0%,
+      rgba(24, 39, 38, 0.2) 45%,
+      rgba(93, 42, 9, 0.45) 100%
+    ),
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(244, 237, 227, 0.16),
+      transparent 55%
+    );
+  pointer-events: none;
+}
+
+.articleBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1.25rem 1.3rem 1.4rem;
+  flex: 1;
+}
+
+.articleSource {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary-bg);
+}
+
+.articleTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.3;
+  color: var(--color-light);
+}
+
+.articleDescription {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--color-muted);
+  flex: 1;
+}
+
+.articleCta {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary-bg);
+}
+
 @media (max-width: 860px) {
   .inner {
     grid-template-columns: 1fr;
@@ -66,5 +184,9 @@
   .media {
     aspect-ratio: 16 / 11;
     order: -1;
+  }
+
+  .articles {
+    grid-template-columns: 1fr;
   }
 }
