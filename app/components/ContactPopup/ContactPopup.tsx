@@ -60,8 +60,7 @@ export default function ContactPopup() {
           </h3>
           <p id="contact-popup-body" className={styles.body}>
             <a href="#contacto" className={styles.link}>
-              Env&iacute;anos un mensaje con lo que sea que quieras saber sobre
-              nosotros
+              Envíanos un mensaje y conoce tu nuevo estilo de vida.
             </a>
           </p>
         </div>
