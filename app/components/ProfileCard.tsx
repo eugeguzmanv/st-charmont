@@ -20,6 +20,7 @@ interface ProfileCardProps {
   status?: string;
   contactText?: string;
   showUserInfo?: boolean;
+  showDetails?: boolean;
   onContactClick?: () => void;
 }
 
@@ -57,6 +58,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   status = 'Online',
   contactText = 'Contact',
   showUserInfo = true,
+  showDetails = true,
   onContactClick
 }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -379,12 +381,14 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                 </div>
               )}
             </div>
-            <div className="pc-content">
-              <div className="pc-details">
-                <h3>{name}</h3>
-                <p>{title}</p>
+            {showDetails && (
+              <div className="pc-content">
+                <div className="pc-details">
+                  <h3>{name}</h3>
+                  <p>{title}</p>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </section>
       </div>

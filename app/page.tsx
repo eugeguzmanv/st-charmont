@@ -1,6 +1,7 @@
 import Hero from "./components/Hero/Hero";
 import StCharmontIntro from "./components/StCharmontIntro/StCharmontIntro";
 import Vision from "./components/Vision/Vision";
+import Visionarios from "./components/Visionarios/Visionarios";
 import TheSoul from "./components/TheSoul/TheSoul";
 import Wellness from "./components/Wellness/Wellness";
 import Hospitality from "./components/Hospitality/Hospitality";
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <StCharmontIntro />
       <Vision />
+      <Visionarios />
       <TheSoul />
       <Wellness />
       <Hospitality />
