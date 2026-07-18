@@ -6,7 +6,7 @@ export default function Hospitality() {
     <section className={styles.hospitality}>
       <div className={styles.inner}>
         <div className={styles.content}>
-          <span className={styles.kicker}>05</span>
+          
           <h2 className={styles.heading}>HOSPITALIDAD DE CLASE MUNDIAL</h2>
           <p className={styles.subheading}>Una experiencia elevada.</p>
           <p className={styles.body}>

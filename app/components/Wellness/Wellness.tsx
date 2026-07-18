@@ -36,7 +36,7 @@ export default function Wellness() {
           />
         </div>
         <div className={styles.content}>
-          <span className={styles.kicker}>04</span>
+          
           <h2 className={styles.heading}>WELLNESS BY DESIGN</h2>
           <p className={styles.subheading}>El lujo de sentirse bien.</p>
           <p className={styles.body}>

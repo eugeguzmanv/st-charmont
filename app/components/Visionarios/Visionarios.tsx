@@ -12,21 +12,21 @@ const TEAM = [
   {
     name: "Fausto Ter\u00e1n",
     role: "Creador y Arquitecto",
-    avatar: "/images/people/Fausto.png",
+    avatar: "/images/people/Fausto.jpeg",
   },
   {
     name: "Alejandro Leo",
     role: "CEO ALEC Wellness",
-    avatar: "/images/people/Alejandro.png",
+    avatar: "/images/people/Alejandro.jpeg",
   },
   {
     name: "Edith Castillo",
     role: "Head of Wellness ALEC",
-    avatar: "/images/people/Edith.png",
+    avatar: "/images/people/Edith.jpeg",
   },
   {
     name: "Rocco Bova",
-    role: "Co-Fundador y Director General de Unconventional Hospitality",
+    role: "Asesor Corporativo",
     avatar: "/images/people/Rocco.jpg",
   },
 ] as const;

@@ -6,7 +6,7 @@ export default function Location() {
     <section className={styles.location}>
       <div className={styles.inner}>
         <div className={styles.content}>
-          <span className={styles.kicker}>06</span>
+          
           <h2 className={styles.heading}>ENTRE MERIDA Y LA COSTA</h2>
           <p className={styles.subheading}>Una ubicacion privilegiada.</p>
           <p className={styles.body}>

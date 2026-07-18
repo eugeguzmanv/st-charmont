@@ -4,7 +4,7 @@ export default function Vision() {
   return (
     <section className={styles.vision}>
       <div className={styles.inner}>
-        <span className={styles.kicker}>02</span>
+        
         <h2 className={styles.heading}>UNA VISION EXTRAORDINARIA</h2>
         <p className={styles.subheading}>Mas que un lugar. Un estilo de vida.</p>
         <p className={styles.body}>
