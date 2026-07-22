@@ -5,7 +5,7 @@ export default function Legacy() {
     <section className={styles.legacy}>
       <div className={styles.inner}>
         <h2 className={styles.heading}>LEGADO</h2>
-        <p className={styles.subheading}>Disenado para trascender.</p>
+        <p className={styles.subheading}>Diseñado para trascender.</p>
         <p className={styles.body}>
           Algunas propiedades generan valor. Otras crean historia. St. Charmont
           ha sido concebido para convertirse en un referente de elegancia,

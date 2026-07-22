@@ -11,7 +11,6 @@ const CAROUSEL_IMAGES = [
   { src: "/images/carousel/IMG_5486.jpg", width: 2160, height: 3840 },
   { src: "/images/carousel/IMG_5514.jpg", width: 2160, height: 3840 },
   { src: "/images/carousel/IMG_5515.jpg", width: 2160, height: 3840 },
-  { src: "/images/carousel/IMG_5516.jpg", width: 2160, height: 3840 },
   { src: "/images/carousel/IMG_5524.jpg", width: 2160, height: 3840 },
   { src: "/images/carousel/IMG_5529.jpg", width: 4536, height: 8064 },
   { src: "/images/carousel/IMG_5531.jpg", width: 4536, height: 8064 },

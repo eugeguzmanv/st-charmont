@@ -1,18 +1,22 @@
 import Image from "next/image";
 import styles from "./TheSoul.module.css";
 import ImageCarousel from "./ImageCarousel";
+import TheSoulDotGrid from "./TheSoulDotGrid";
 
 export default function TheSoul() {
   return (
     <section id="alma" className={styles.soul}>
-      <div className={styles.media}>
-        <Image
-          src="/images/casa.png"
-          alt="Hacienda historica restaurada de St. Charmont"
-          fill
-          sizes="100vw"
-          className={styles.mediaImg}
-        />
+      <div className={styles.mediaBand}>
+        <TheSoulDotGrid />
+        <div className={styles.media}>
+          <Image
+            src="/images/reemplazo_casa.jpeg"
+            alt="Hacienda historica restaurada de St. Charmont"
+            fill
+            sizes="100vw"
+            className={styles.mediaImg}
+          />
+        </div>
       </div>
       <div className={styles.inner}>
         <div className={styles.copy}>
