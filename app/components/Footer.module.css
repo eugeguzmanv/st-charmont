@@ -1,0 +1,220 @@
+.footer {
+  background-color: var(--color-quaternary);
+  color: var(--color-light);
+  padding-block: clamp(3rem, 8vh, 5rem);
+  padding-inline: var(--section-padding-inline);
+  border-top: 1px solid rgba(193, 170, 141, 0.18);
+}
+
+.footerHeader {
+  max-width: var(--max-width);
+  margin: 0 auto clamp(2.5rem, 6vw, 4rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.headerLeftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.logoContainer {
+  max-width: 320px;
+}
+
+.logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.socialIcons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.socialIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgba(193, 170, 141, 0.35);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.25s ease;
+}
+
+.socialIcon:hover {
+  background: rgba(193, 170, 141, 0.12);
+  border-color: var(--color-primary-bg);
+  transform: translateY(-2px);
+}
+
+.headerProjectInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 0.75rem;
+}
+
+.projectLabel {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-muted);
+}
+
+.companyName {
+  font-family: var(--font-sans);
+  font-size: clamp(0.72rem, 1.6vw, 0.82rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-light);
+  max-width: 28ch;
+}
+
+.projectLogoLink {
+  display: block;
+  margin-top: 0.35rem;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.projectLogoLink:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+.projectLogo {
+  display: block;
+  width: min(100%, 260px);
+  height: auto;
+}
+
+.mainContent {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-top: clamp(1.5rem, 4vw, 2.5rem);
+  border-top: 1px solid rgba(193, 170, 141, 0.14);
+}
+
+.contactSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  max-width: 640px;
+}
+
+.contactTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary-bg);
+}
+
+.hoursBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.blockTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-light);
+}
+
+.hoursGrid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.45rem 1.5rem;
+  font-size: 0.95rem;
+}
+
+.dayLabel {
+  color: var(--color-primary-bg);
+}
+
+.dayTime {
+  color: var(--color-muted);
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+.iconStandard {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.contactLink {
+  color: var(--color-light);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.contactLink:hover {
+  color: var(--color-primary-bg);
+}
+
+.footerBottom {
+  max-width: var(--max-width);
+  margin: clamp(2.5rem, 6vw, 4rem) auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(193, 170, 141, 0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.disclaimer {
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: rgba(244, 237, 227, 0.55);
+  max-width: 72ch;
+}
+
+.rights {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 237, 227, 0.45);
+}
+
+@media (max-width: 860px) {
+  .footerHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .headerProjectInfo {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .companyName {
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .logoContainer {
+    max-width: 240px;
+  }
+}

@@ -1,22 +1,21 @@
 import Image from "next/image";
 import styles from "./TheSoul.module.css";
 import ImageCarousel from "./ImageCarousel";
-import TheSoulDotGrid from "./TheSoulDotGrid";
+
+const SOUL_HERO_IMAGE =
+  "/images/WhatsApp Image 2026-07-22 at 10.15.43 AM.jpeg";
 
 export default function TheSoul() {
   return (
     <section id="alma" className={styles.soul}>
       <div className={styles.mediaBand}>
-        <TheSoulDotGrid />
-        <div className={styles.media}>
-          <Image
-            src="/images/reemplazo_casa.jpeg"
-            alt="Hacienda historica restaurada de St. Charmont"
-            fill
-            sizes="100vw"
-            className={styles.mediaImg}
-          />
-        </div>
+        <Image
+          src={SOUL_HERO_IMAGE}
+          alt="Patio nocturno con velas en la hacienda de St. Charmont"
+          fill
+          sizes="100vw"
+          className={styles.mediaImg}
+        />
       </div>
       <div className={styles.inner}>
         <div className={styles.copy}>
@@ -26,11 +25,7 @@ export default function TheSoul() {
           </div>
           <div className={styles.details}>
             <p className={styles.body}>
-              En el corazon del proyecto se encuentra una hacienda historica
-              cuidadosamente restaurada para preservar su esencia y proyectarla
-              hacia el futuro. Sus espacios, jardines y arquitectura daran vida
-              a experiencias que celebran la cultura, la hospitalidad y el arte
-              de vivir bien.
+            Con más de 300 años de historia, Hacienda Noc-Ac da identidad a St. Charmont. Cuidadosamente restaurada, preserva su riqueza arquitectónica y cultural para integrarse a un proyecto donde la historia, la hospitalidad y el bienestar conviven en perfecta armonía.
             </p>
             <p className={styles.statement}>
               No es un elemento del proyecto. Es su razon de existir.
