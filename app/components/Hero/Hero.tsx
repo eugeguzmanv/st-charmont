@@ -1,13 +1,18 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import styles from "./Hero.module.css";
 import WaxSeal from "../WaxSeal/WaxSeal";
 
 const STORAGE_KEY = "st-charmont-envelope-opened";
 
-function hasOpenedEnvelope(): boolean {
+function subscribeToOpened(onStoreChange: () => void) {
+  window.addEventListener("storage", onStoreChange);
+  return () => window.removeEventListener("storage", onStoreChange);
+}
+
+function getOpenedSnapshot() {
   try {
     return window.localStorage.getItem(STORAGE_KEY) === "1";
   } catch {
@@ -15,7 +20,11 @@ function hasOpenedEnvelope(): boolean {
   }
 }
 
-function markEnvelopeOpened(): void {
+function getOpenedServerSnapshot() {
+  return false;
+}
+
+function markEnvelopeOpened() {
   try {
     window.localStorage.setItem(STORAGE_KEY, "1");
   } catch {
@@ -24,32 +33,35 @@ function markEnvelopeOpened(): void {
 }
 
 export default function Hero() {
-  const [open, setOpen] = useState(false);
-  const [skipIntro, setSkipIntro] = useState(false);
-  const [ready, setReady] = useState(false);
+  const alreadyOpened = useSyncExternalStore(
+    subscribeToOpened,
+    getOpenedSnapshot,
+    getOpenedServerSnapshot,
+  );
+  const [openedNow, setOpenedNow] = useState(false);
 
-  // Restore prior visits before paint so refresh / return skips the gate.
-  useLayoutEffect(() => {
-    if (hasOpenedEnvelope()) {
-      setOpen(true);
-      setSkipIntro(true);
-    }
-    setReady(true);
-  }, []);
+  const open = alreadyOpened || openedNow;
+  const skipIntro = alreadyOpened;
 
   useEffect(() => {
-    if (!ready) return;
-
-    document.body.style.overflow = open ? "" : "hidden";
+    // Read storage directly so refresh never locks during hydration handoff.
+    const shouldLock = !open && !getOpenedSnapshot();
+    document.body.style.overflow = shouldLock ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open, ready]);
+  }, [open]);
 
   const handleOpen = () => {
     if (open) return;
-    setOpen(true);
+    setOpenedNow(true);
     markEnvelopeOpened();
+  };
+
+  const handleScroll = () => {
+    document
+      .getElementById("intro")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -127,11 +139,7 @@ export default function Hero() {
       <button
         type="button"
         className={styles.scrollCue}
-        onClick={() => {
-          document
-            .getElementById("intro")
-            ?.scrollIntoView({ behavior: "smooth", block: "start" });
-        }}
+        onClick={handleScroll}
         aria-label="Descubrir"
       >
         <span className={styles.chevron} aria-hidden="true" />
