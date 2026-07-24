@@ -16,9 +16,26 @@
 }
 
 .heading {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(2.1rem, 10vw, 6rem);
   letter-spacing: 0.22em;
+  line-height: 1.05;
   color: var(--color-primary-bg);
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .heading {
+    font-size: clamp(1.75rem, 8.5vw, 2.85rem);
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (max-width: 400px) {
+  .heading {
+    font-size: clamp(1.55rem, 7.8vw, 2.25rem);
+    letter-spacing: 0.06em;
+  }
 }
 
 .subheading {
