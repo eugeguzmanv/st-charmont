@@ -1,29 +1,62 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Hero.module.css";
 import WaxSeal from "../WaxSeal/WaxSeal";
 
+const STORAGE_KEY = "st-charmont-envelope-opened";
+
+function hasOpenedEnvelope(): boolean {
+  try {
+    return window.localStorage.getItem(STORAGE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function markEnvelopeOpened(): void {
+  try {
+    window.localStorage.setItem(STORAGE_KEY, "1");
+  } catch {
+    // Ignore private-mode / storage quota failures.
+  }
+}
+
 export default function Hero() {
   const [open, setOpen] = useState(false);
+  const [skipIntro, setSkipIntro] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  // Restore prior visits before paint so refresh / return skips the gate.
+  useLayoutEffect(() => {
+    if (hasOpenedEnvelope()) {
+      setOpen(true);
+      setSkipIntro(true);
+    }
+    setReady(true);
+  }, []);
 
   useEffect(() => {
+    if (!ready) return;
+
     document.body.style.overflow = open ? "" : "hidden";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open]);
+  }, [open, ready]);
 
-  const handleScroll = () => {
-    document
-      .getElementById("intro")
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const handleOpen = () => {
+    if (open) return;
+    setOpen(true);
+    markEnvelopeOpened();
   };
 
   return (
     <section
-      className={`${styles.hero} ${open ? styles.open : ""}`}
+      className={`${styles.hero} ${open ? styles.open : ""} ${
+        skipIntro ? styles.revealed : ""
+      }`}
       aria-label="Bienvenida"
     >
       <Image
@@ -38,7 +71,7 @@ export default function Hero() {
         <button
           type="button"
           className={styles.envelope}
-          onClick={() => setOpen(true)}
+          onClick={handleOpen}
           aria-label="Abrir la invitacion"
           aria-expanded={open}
         >
@@ -60,7 +93,7 @@ export default function Hero() {
             <span className={styles.quoteAuthor}>&mdash; Omar Salom&oacute;n</span>
           </span>
 
-          <WaxSeal open={open} />
+          <WaxSeal open={open} instant={skipIntro} />
         </button>
 
         <div className={styles.letter} aria-hidden={!open}>
@@ -94,7 +127,11 @@ export default function Hero() {
       <button
         type="button"
         className={styles.scrollCue}
-        onClick={handleScroll}
+        onClick={() => {
+          document
+            .getElementById("intro")
+            ?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }}
         aria-label="Descubrir"
       >
         <span className={styles.chevron} aria-hidden="true" />

@@ -3,12 +3,16 @@ import styles from "./WaxSeal.module.css";
 
 type WaxSealProps = {
   open: boolean;
+  /** Skip peel animation and show the final hidden state immediately. */
+  instant?: boolean;
 };
 
-export default function WaxSeal({ open }: WaxSealProps) {
+export default function WaxSeal({ open, instant = false }: WaxSealProps) {
   return (
     <span
-      className={`${styles.seal} ${open ? styles.peel : ""}`}
+      className={`${styles.seal} ${open ? styles.peel : ""} ${
+        instant && open ? styles.instant : ""
+      }`}
       aria-hidden="true"
     >
       <Image
