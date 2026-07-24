@@ -10,7 +10,7 @@ export default function Footer() {
         <div className={styles.headerLeftColumn}>
           <div className={styles.logoContainer}>
             <Image
-              src="/images/texto_sobre.png"
+              src="/images/STCHARMONT_MASTERBRAND B.png"
               alt="St. Charmont Residences"
               width={2534}
               height={527}

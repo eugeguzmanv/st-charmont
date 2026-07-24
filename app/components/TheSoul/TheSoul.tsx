@@ -25,11 +25,9 @@ export default function TheSoul() {
           </div>
           <div className={styles.details}>
             <p className={styles.body}>
-            Con más de 300 años de historia, Hacienda Noc-Ac da identidad a St. Charmont. Cuidadosamente restaurada, preserva su riqueza arquitectónica y cultural para integrarse a un proyecto donde la historia, la hospitalidad y el bienestar conviven en perfecta armonía.
+            Con más de tres siglos de historia, Hacienda Noc Ac es el origen vivo de St. Charmont. Restaurada con respeto, conserva su arquitectura y su memoria para dialogar con un proyecto donde la hospitalidad y el bienestar conviven de forma natural.
             </p>
-            <p className={styles.statement}>
-              No es un elemento del proyecto. Es su razon de existir.
-            </p>
+            
           </div>
         </div>
 

@@ -7,8 +7,8 @@ export default function Location() {
       <div className={styles.inner}>
         <div className={styles.content}>
           
-          <h2 className={styles.heading}>ENTRE MERIDA Y LA COSTA</h2>
-          <p className={styles.subheading}>Una ubicacion privilegiada.</p>
+          <h2 className={styles.heading}>ENTRE MÉRIDA Y LA COSTA</h2>
+          <p className={styles.subheading}>Una ubicación privilegiada.</p>
           <p className={styles.body}>
             Estrategicamente ubicado en uno de los corredores mas prometedores
             de Yucatan, St. Charmont ofrece la combinacion perfecta entre

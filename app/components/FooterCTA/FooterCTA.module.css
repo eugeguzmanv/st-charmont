@@ -25,6 +25,8 @@
 .invite {
   font-size: 1.05rem;
   color: var(--color-muted);
+  max-width: 52ch;
+  text-align: justify;
 }
 
 .actions {

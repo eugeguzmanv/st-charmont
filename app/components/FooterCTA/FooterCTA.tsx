@@ -6,11 +6,11 @@ export default function FooterCTA() {
     <footer id="contacto" className={styles.footer}>
       <div className={styles.inner}>
         <h2 className={styles.heading}>
-          Bienvenido a una nueva expresion del lujo.
+        Bienvenido a un lugar donde la calma encuentra su forma, reservado para quienes reconocen su valor.
         </h2>
 
         <p className={styles.invite}>
-          Solicita informacion exclusiva sobre el lanzamiento.
+          Solicita información exclusiva sobre el lanzamiento.
         </p>
 
         <div className={styles.actions}>

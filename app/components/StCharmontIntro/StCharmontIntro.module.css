@@ -41,12 +41,14 @@
   font-style: italic;
   color: var(--color-primary-bg);
   max-width: 30ch;
+  text-align: justify;
 }
 
 .body {
   font-size: 1.02rem;
   color: var(--color-muted);
   max-width: 52ch;
+  text-align: justify;
 }
 
 .media {

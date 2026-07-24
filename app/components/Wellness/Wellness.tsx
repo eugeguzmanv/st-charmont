@@ -40,20 +40,14 @@ export default function Wellness() {
           <h2 className={styles.heading}>WELLNESS BY DESIGN</h2>
           <p className={styles.subheading}>El lujo de sentirse bien.</p>
           <p className={styles.body}>
-            En St. Charmont, el bienestar no es una amenidad. Es una filosofia
-            presente en cada experiencia, cada espacio y cada detalle. Disenado
-            para fomentar el equilibrio entre cuerpo, mente y entorno, el
-            proyecto invita a vivir con mayor plenitud, conexion y serenidad.
+          En St. Charmont, el bienestar no es una amenidad. Es una filosofía que atraviesa cada experiencia, cada espacio y cada detalle. Diseñado para armonizar cuerpo, mente y entorno, el proyecto invita a una vida más plena, más consciente, más serena. Aquí, el bienestar sucede en silencio.
           </p>
         </div>
       </div>
 
       <div className={styles.insights}>
         <h3 className={styles.insightTitle}>Wellness is the new luxury</h3>
-        <p className={styles.insightText}>
-          Descubre como el wellness se ha convertido en la maxima expresion de
-          lujo moderno
-        </p>
+        <p className={styles.insightText}>Descubre como el wellness se ha convertido en la maxima expresion de lujo moderno</p>
 
         <div className={styles.articles}>
           {ARTICLES.map((article) => (

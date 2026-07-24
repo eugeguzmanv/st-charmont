@@ -10,12 +10,11 @@ export default function Hospitality() {
           <h2 className={styles.heading}>HOSPITALIDAD DE CLASE MUNDIAL</h2>
           <p className={styles.subheading}>Una experiencia elevada.</p>
           <p className={styles.body}>
-            St. Charmont integrara un hotel de lujo concebido para complementar
-            la experiencia de sus residentes y visitantes. Un referente de
-            hospitalidad que enriquecera la vida cotidiana mediante experiencias
-            exclusivas, servicio excepcional y una conexion autentica con el
-            patrimonio de la hacienda.
-          </p>
+          St. Charmont integrará un resort concebido para acompañar la vida de residentes y visitantes con una hospitalidad discreta, precisa y profundamente serena. Un destino donde cada momento se distingue por calidad, cuidado y detalles que marcan la diferencia.</p>
+
+ <p className={styles.body}>Aquí, la hospitalidad ocurre con la elegancia de lo silencioso.</p>
+
+          
         </div>
         <div className={styles.media}>
           <Image

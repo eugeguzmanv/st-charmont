@@ -17,19 +17,19 @@ const TABS: Tab[] = [
     id: "hotel",
     label: "Hotel",
     title: "HOTEL",
-    body: "Ubicado dentro de la emblemática Hacienda, el hotel será operado bajo los estándares de una reconocida marca internacional, ofreciendo una experiencia de hospitalidad excepcional. Sus huéspedes y residentes disfrutarán de acceso a una exclusiva colección de amenidades y experiencias, donde la historia, el bienestar y el servicio convergen en perfecta armonía.",
+    body: "El hotel se integrará con  la  arquitectura original de la hacienda, para  crear un entorno único. Los jardines y los árboles centenarios serán los guardianes naturales de un espacio dedicado al bienestar profundo. La operación estará a cargo de una marca internacional de prestigio, asegurando una hospitalidad que se vive con la precisión y la calma de lo excepcional.",
   },
   {
     id: "residences",
     label: "Residences",
     title: "BRANDED RESIDENCES",
-    body: "Una Branded Residence combina la exclusividad de una residencia privada con el respaldo y los servicios de una marca hotelera de lujo. Disfruta de la administración, mantenimiento y hospitalidad de un hotel de clase mundial, con la libertad de utilizar tu propiedad cuando lo desees o integrarla al programa de rentas para generar ingresos.",
+    body: "Una Branded Residence en St. Charmont representa la unión entre una residencia privada y la precisión operativa de una marca hotelera de prestigio. La propiedad se vive con la calma de lo permanente y con el respaldo de una hospitalidad que cuida cada detalle. El residente puede habitarla en cualquier momento o integrarla al programa de operación para generar rendimiento, siempre bajo los estándares más altos del mundo.",
   },
   {
     id: "spa",
     label: "Spa",
     title: "SPA",
-    body: "El Spa será un refugio dedicado al bienestar integral, donde cada experiencia ha sido concebida para promover la relajación, el equilibrio y el cuidado personal. Un espacio que complementa el estilo de vida de St. Charmont con una propuesta inspirada en la armonía y el confort.",
+    body: "El Spa, donde la ciencia contemporánea convive con rituales ancestrales. La arquitectura y los jardines crean un entorno que invita al cuerpo a renovarse y a la mente a descansar. Su operación estará a cargo de una firma reconocida entre las grandes casas de bienestar del mundo, asegurando tratamientos de última generación,  que acompañan la vida en su forma más profunda.",
   },
 ];
 

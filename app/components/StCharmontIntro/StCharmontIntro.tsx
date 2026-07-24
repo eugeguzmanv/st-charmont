@@ -10,14 +10,9 @@ export default function StCharmontIntro() {
             ST. CHARMONT
             <span className={styles.subtitle}>Wellness &amp; Luxury</span>
           </h2>
-          <p className={styles.lead}>
-            Donde la historia encuentra una nueva forma de ser vivida.
-          </p>
+          
           <p className={styles.body}>
-            Entre la elegancia atemporal de una hacienda historica y una vision
-            contemporanea del bienestar, surge St. Charmont: un destino
-            concebido para quienes valoran la belleza, la privacidad y las
-            experiencias extraordinarias.
+          St. Charmont nace para crear un nuevo territorio de calma y permanencia en Yucatán. Un destino donde la arquitectura y la tierra se encuentran y el tiempo adquiere otra profundidad. En St. Charmont, la grandeza no se anuncia, se construye.
           </p>
         </div>
 

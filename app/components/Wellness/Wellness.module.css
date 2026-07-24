@@ -57,6 +57,7 @@
   font-size: 1.05rem;
   color: var(--color-muted);
   max-width: 54ch;
+  text-align: justify;
 }
 
 .insights {
@@ -78,7 +79,7 @@
 .insightText {
   font-size: 1.05rem;
   color: var(--color-muted);
-  max-width: 58ch;
+  white-space: nowrap;
 }
 
 .articles {
@@ -168,6 +169,7 @@
   line-height: 1.55;
   color: var(--color-muted);
   flex: 1;
+  text-align: justify;
 }
 
 .articleCta {

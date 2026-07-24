@@ -129,6 +129,7 @@
   line-height: 1.85;
   color: var(--color-muted);
   max-width: 62ch;
+  text-align: justify;
 }
 
 @keyframes panelReveal {

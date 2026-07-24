@@ -38,4 +38,5 @@
   font-size: 1.05rem;
   color: rgba(24, 39, 38, 0.82);
   max-width: 60ch;
+  text-align: justify;
 }

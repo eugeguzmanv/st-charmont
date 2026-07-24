@@ -60,6 +60,7 @@
 .body {
   font-size: 1.05rem;
   color: var(--color-muted);
+  text-align: justify;
 }
 
 .statement {
@@ -70,6 +71,7 @@
   border-left: 2px solid var(--color-tertiary);
   padding-left: 1.4rem;
   margin-top: 0.6rem;
+  text-align: justify;
 }
 
 @media (max-width: 860px) {
