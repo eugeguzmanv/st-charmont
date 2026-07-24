@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   title: "St. Charmont - Wellness & Luxury",
   description:
     "St. Charmont: un destino residencial y de hospitalidad de lujo en Yucatan, donde la historia, el bienestar y la elegancia atemporal se encuentran.",
+  icons: {
+    icon: [{ url: "/favicon.ico", sizes: "any" }],
+    apple: "/apple-icon.png",
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
