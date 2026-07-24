@@ -18,10 +18,11 @@
 }
 
 .stage {
-  --w: min(90vw, 560px, 84vh);
+  --w: min(100%, 560px, 84vh);
   position: relative;
   z-index: 1;
   width: var(--w);
+  max-width: 100%;
   margin-top: clamp(1rem, 8vh, 4rem);
   display: flex;
   flex-direction: column;
@@ -167,7 +168,8 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: min(94vw, 656px);
+  width: min(100%, 656px);
+  max-width: 100%;
   padding: 1.5rem;
   background: var(--color-light);
   color: var(--color-quaternary);

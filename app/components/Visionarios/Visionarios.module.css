@@ -3,7 +3,7 @@
   color: var(--color-light);
   padding-block: var(--section-padding-block);
   padding-inline: var(--section-padding-inline);
-  overflow: visible;
+  overflow-x: clip;
 }
 
 .inner {

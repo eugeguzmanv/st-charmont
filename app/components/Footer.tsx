@@ -21,7 +21,7 @@ export default function Footer() {
 
           <div className={styles.socialIcons}>
             <a
-              href="https://www.facebook.com/people/St-Charmont-Residences"
+              href="https://www.facebook.com/share/1Jqmhe5jFV/?mibextid=wwXIfr"
               aria-label="Facebook"
               className={styles.socialIcon}
               target="_blank"
