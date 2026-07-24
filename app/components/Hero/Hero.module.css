@@ -255,30 +255,6 @@
   pointer-events: auto;
 }
 
-/* Returning visitors: jump to the opened letter without replaying the gate */
-.revealed .flap {
-  animation: none;
-  transform: rotateX(-152deg);
-}
-
-.revealed .quote,
-.revealed .quoteAuthor {
-  opacity: 0;
-  transition: none;
-}
-
-.revealed .letter {
-  animation: none;
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.revealed .scrollCue {
-  opacity: 1;
-  pointer-events: auto;
-  transition: none;
-}
-
 .chevron {
   width: 16px;
   height: 16px;

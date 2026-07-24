@@ -1,30 +1,25 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Hero.module.css";
 import WaxSeal from "../WaxSeal/WaxSeal";
 
-const STORAGE_KEY = "st-charmont-envelope-opened";
+const STORAGE_KEY = "st-charmont-envelope-unlocked";
 
-function subscribeToOpened(onStoreChange: () => void) {
-  window.addEventListener("storage", onStoreChange);
-  return () => window.removeEventListener("storage", onStoreChange);
-}
-
-function getOpenedSnapshot() {
+function hasUnlockedEnvelope() {
   try {
-    return window.localStorage.getItem(STORAGE_KEY) === "1";
+    return (
+      window.localStorage.getItem(STORAGE_KEY) === "1" ||
+      // Legacy key from an earlier revision of this gate.
+      window.localStorage.getItem("st-charmont-envelope-opened") === "1"
+    );
   } catch {
     return false;
   }
 }
 
-function getOpenedServerSnapshot() {
-  return false;
-}
-
-function markEnvelopeOpened() {
+function markEnvelopeUnlocked() {
   try {
     window.localStorage.setItem(STORAGE_KEY, "1");
   } catch {
@@ -33,19 +28,12 @@ function markEnvelopeOpened() {
 }
 
 export default function Hero() {
-  const alreadyOpened = useSyncExternalStore(
-    subscribeToOpened,
-    getOpenedSnapshot,
-    getOpenedServerSnapshot,
-  );
-  const [openedNow, setOpenedNow] = useState(false);
-
-  const open = alreadyOpened || openedNow;
-  const skipIntro = alreadyOpened;
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    // Read storage directly so refresh never locks during hydration handoff.
-    const shouldLock = !open && !getOpenedSnapshot();
+    // Only the first visit locks scroll. Returning visits can open the
+    // envelope again without trapping the page.
+    const shouldLock = !open && !hasUnlockedEnvelope();
     document.body.style.overflow = shouldLock ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
@@ -54,8 +42,8 @@ export default function Hero() {
 
   const handleOpen = () => {
     if (open) return;
-    setOpenedNow(true);
-    markEnvelopeOpened();
+    setOpen(true);
+    markEnvelopeUnlocked();
   };
 
   const handleScroll = () => {
@@ -66,9 +54,7 @@ export default function Hero() {
 
   return (
     <section
-      className={`${styles.hero} ${open ? styles.open : ""} ${
-        skipIntro ? styles.revealed : ""
-      }`}
+      className={`${styles.hero} ${open ? styles.open : ""}`}
       aria-label="Bienvenida"
     >
       <Image
@@ -105,7 +91,7 @@ export default function Hero() {
             <span className={styles.quoteAuthor}>&mdash; Omar Salom&oacute;n</span>
           </span>
 
-          <WaxSeal open={open} instant={skipIntro} />
+          <WaxSeal open={open} />
         </button>
 
         <div className={styles.letter} aria-hidden={!open}>
