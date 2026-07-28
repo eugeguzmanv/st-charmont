@@ -41,7 +41,7 @@ const jsonLd = {
       "@id": `${siteUrl}/#organization`,
       name: siteName,
       url: siteUrl,
-      logo: `${siteUrl}/icon.png`,
+      logo: `${siteUrl}/images/favicon.png`,
       email: "info@stcharmont.com",
       telephone: "+52-999-181-4673",
       sameAs: [
@@ -152,12 +152,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [
-      { url: "/icon.png", type: "image/png" },
-      { url: "/favicon.ico", sizes: "any" },
-    ],
-    apple: "/icon.png",
-    shortcut: "/icon.png",
+    icon: "/images/favicon.png",
   },
 };
 
