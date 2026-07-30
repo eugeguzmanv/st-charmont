@@ -5,15 +5,46 @@ import Image from "next/image";
 import styles from "./Hero.module.css";
 import WaxSeal from "../WaxSeal/WaxSeal";
 
+const STORAGE_KEY = "st-charmont-envelope-unlocked";
+
+function hasUnlockedEnvelope() {
+  try {
+    return (
+      window.localStorage.getItem(STORAGE_KEY) === "1" ||
+      // Legacy key from an earlier revision of this gate.
+      window.localStorage.getItem("st-charmont-envelope-opened") === "1"
+    );
+  } catch {
+    return false;
+  }
+}
+
+function markEnvelopeUnlocked() {
+  try {
+    window.localStorage.setItem(STORAGE_KEY, "1");
+  } catch {
+    // Ignore private-mode / storage quota failures.
+  }
+}
+
 export default function Hero() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "" : "hidden";
+    // Only the first visit locks scroll. Returning visits can open the
+    // envelope again without trapping the page.
+    const shouldLock = !open && !hasUnlockedEnvelope();
+    document.body.style.overflow = shouldLock ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  const handleOpen = () => {
+    if (open) return;
+    setOpen(true);
+    markEnvelopeUnlocked();
+  };
 
   const handleScroll = () => {
     document
@@ -38,7 +69,7 @@ export default function Hero() {
         <button
           type="button"
           className={styles.envelope}
-          onClick={() => setOpen(true)}
+          onClick={handleOpen}
           aria-label="Abrir la invitacion"
           aria-expanded={open}
         >
