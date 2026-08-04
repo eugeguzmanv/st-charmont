@@ -1,49 +1,22 @@
 "use client";
 
 import ProfileCard from "../ProfileCard";
+import { useLocale } from "@/lib/i18n/LocaleProvider";
 import styles from "./Visionarios.module.css";
 
-const TEAM = [
-  {
-    name: "Omar Salom\u00f3n",
-    role: "Director General",
-    avatar: "/images/people/Omar.jpeg",
-  },
-  {
-    name: "Fausto Ter\u00e1n",
-    role: "Creador y Arquitecto",
-    avatar: "/images/people/Fausto.jpeg",
-  },
-  {
-    name: "Alejandro Leo",
-    role: "CEO ALEC Wellness",
-    avatar: "/images/people/Alejandro.jpeg",
-  },
-  {
-    name: "Edith Castillo",
-    role: "Head of Wellness ALEC",
-    avatar: "/images/people/Edith.jpeg",
-  },
-  {
-    name: "Rocco Bova",
-    role: "Asesor Corporativo",
-    avatar: "/images/people/Rocco.jpg",
-  },
-] as const;
-
 export default function Visionarios() {
+  const { dict } = useLocale();
+
   return (
-    <section className={styles.visionarios}>
+    <section id="visionarios" className={styles.visionarios}>
       <div className={styles.inner}>
         <header className={styles.header}>
-          <h2 className={styles.heading}>Visionarios</h2>
-          <p className={styles.subheading}>
-            Conoce al equipo detr&aacute;s de St. Charmont
-          </p>
+          <h2 className={styles.heading}>{dict.visionarios.heading}</h2>
+          <p className={styles.subheading}>{dict.visionarios.subheading}</p>
         </header>
 
         <div className={styles.grid}>
-          {TEAM.map((member) => (
+          {dict.visionarios.team.map((member) => (
             <div key={member.name} className={styles.cardSlot}>
               <ProfileCard
                 name={member.name}

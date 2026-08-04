@@ -1,17 +1,14 @@
 import Image from "next/image";
+import type { Dictionary } from "@/lib/i18n/types";
 import styles from "./FooterCTA.module.css";
 
-export default function FooterCTA() {
+export default function FooterCTA({ dict }: { dict: Dictionary }) {
   return (
     <footer id="contacto" className={styles.footer}>
       <div className={styles.inner}>
-        <h2 className={styles.heading}>
-        Bienvenido a un lugar donde la calma encuentra su forma, reservado para quienes reconocen su valor.
-        </h2>
+        <h2 className={styles.heading}>{dict.footerCta.heading}</h2>
 
-        <p className={styles.invite}>
-          Solicita información exclusiva sobre el lanzamiento.
-        </p>
+        <p className={styles.invite}>{dict.footerCta.invite}</p>
 
         <div className={styles.actions}>
           <a
@@ -20,20 +17,20 @@ export default function FooterCTA() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            WhatsApp
+            {dict.footerCta.whatsapp}
           </a>
           <a
             href="mailto:info@stcharmont.com"
             className={`${styles.button} ${styles.buttonSecondary}`}
           >
-            E-Mail
+            {dict.footerCta.email}
           </a>
         </div>
 
         <div className={styles.media}>
           <Image
             src="/images/soul2.jpeg"
-            alt="Interior de lujo en St. Charmont"
+            alt={dict.footerCta.mediaAlt}
             width={1024}
             height={573}
             sizes="(max-width: 720px) 90vw, 680px"
@@ -43,7 +40,7 @@ export default function FooterCTA() {
 
         <div className={styles.brand}>
           <span className={styles.brandName}>St. Charmont</span>
-          <span className={styles.brandTag}>Proximamente</span>
+          <span className={styles.brandTag}>{dict.footerCta.brandTag}</span>
         </div>
       </div>
     </footer>

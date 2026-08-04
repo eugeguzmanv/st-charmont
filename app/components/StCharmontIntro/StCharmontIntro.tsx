@@ -1,30 +1,29 @@
 import Image from "next/image";
+import type { Dictionary } from "@/lib/i18n/types";
 import styles from "./StCharmontIntro.module.css";
 
-export default function StCharmontIntro() {
+export default function StCharmontIntro({ dict }: { dict: Dictionary }) {
   return (
     <section id="intro" className={styles.intro}>
       <div className={styles.inner}>
         <div className={styles.content}>
           <h2 className={styles.heading}>
             ST. CHARMONT
-            <span className={styles.subtitle}>Wellness &amp; Luxury</span>
+            <span className={styles.subtitle}>{dict.intro.subtitle}</span>
           </h2>
-          
-          <p className={styles.body}>
-          St. Charmont nace para crear un nuevo territorio de calma y permanencia en Yucatán. Un destino donde la arquitectura y la tierra se encuentran y el tiempo adquiere otra profundidad. En St. Charmont, la grandeza no se anuncia, se construye.
-          </p>
+
+          <p className={styles.body}>{dict.intro.body}</p>
         </div>
 
         <div className={styles.media}>
           <Image
             src="/images/STCHARMONT_MANIJA.png"
-            alt="Hacienda historica de St. Charmont"
+            alt={dict.intro.mediaAlt}
             fill
             sizes="(max-width: 860px) 100vw, 50vw"
             className={styles.mediaImg}
           />
-          <span className={styles.mediaLabel}>St. Charmont</span>
+          <span className={styles.mediaLabel}>{dict.intro.mediaLabel}</span>
         </div>
       </div>
     </section>

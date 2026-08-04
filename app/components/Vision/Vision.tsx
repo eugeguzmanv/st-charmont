@@ -1,14 +1,12 @@
+import type { Dictionary } from "@/lib/i18n/types";
 import styles from "./Vision.module.css";
 
-export default function Vision() {
+export default function Vision({ dict }: { dict: Dictionary }) {
   return (
-    <section className={styles.vision}>
+    <section id="vision" className={styles.vision}>
       <div className={styles.inner}>
-        
-        <h2 className={styles.heading}>UNA VISIÓN EXTRAORDINARIA</h2>
-        <p className={styles.body}>
-        St. Charmont nace con la intención de crear uno de los destinos residenciales y de hospitalidad más exclusivos de Yucatán. Un entorno donde la arquitectura, la naturaleza, el bienestar y el servicio convergen para ofrecer una experiencia única, diseñada para disfrutarse generación tras generación.
-        </p>
+        <h2 className={styles.heading}>{dict.vision.heading}</h2>
+        <p className={styles.body}>{dict.vision.body}</p>
       </div>
     </section>
   );

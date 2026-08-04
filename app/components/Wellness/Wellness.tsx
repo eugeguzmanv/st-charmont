@@ -1,56 +1,38 @@
 import Image from "next/image";
+import type { Dictionary } from "@/lib/i18n/types";
 import styles from "./Wellness.module.css";
 
-const ARTICLES = [
-  {
-    href: "https://www.fastcompany.com/40512467/utopic-wellness-communities-are-a-multibillion-dollar-real-estate-trend?utm_source=chatgpt.com",
-    source: "Fast Company",
-    image: "/images/articles/fastcompany.png",
-    title:
-      "Utopic wellness communities are a multibillion-dollar real estate trend",
-    description:
-      "Como las comunidades de wellness estan transformando el mercado inmobiliario de lujo en un destino integral de estilo de vida.",
-  },
-  {
-    href: "https://www.treehugger.com/wellness-new-luxury-multimillion-dollar-condos-get-healthy-4855743?utm_source=chatgpt.com",
-    source: "Treehugger",
-    image: "/images/articles/treehugger.png",
-    title:
-      "Wellness Is the New Luxury, as Multimillion Dollar Condos Get Healthy",
-    description:
-      "El auge del real estate de bienestar: cuando el bienestar biologico se convierte en la maxima expresion del lujo moderno.",
-  },
+const ARTICLE_IMAGES = [
+  "/images/articles/fastcompany.png",
+  "/images/articles/treehugger.png",
 ] as const;
 
-export default function Wellness() {
+export default function Wellness({ dict }: { dict: Dictionary }) {
   return (
-    <section className={styles.wellness}>
+    <section id="wellness" className={styles.wellness}>
       <div className={styles.inner}>
         <div className={styles.media}>
           <Image
             src="/images/Copia de STCHARMONT_MURO GRABADO.png"
-            alt="Espacio de bienestar en St. Charmont"
+            alt={dict.wellness.mediaAlt}
             fill
             sizes="(max-width: 860px) 100vw, 50vw"
             className={styles.mediaImg}
           />
         </div>
         <div className={styles.content}>
-          
-          <h2 className={styles.heading}>WELLNESS BY DESIGN</h2>
-          <p className={styles.subheading}>El lujo de sentirse bien.</p>
-          <p className={styles.body}>
-          En St. Charmont, el bienestar no es una amenidad. Es una filosofía que atraviesa cada experiencia, cada espacio y cada detalle. Diseñado para armonizar cuerpo, mente y entorno, el proyecto invita a una vida más plena, más consciente, más serena. Aquí, el bienestar sucede en silencio.
-          </p>
+          <h2 className={styles.heading}>{dict.wellness.heading}</h2>
+          <p className={styles.subheading}>{dict.wellness.subheading}</p>
+          <p className={styles.body}>{dict.wellness.body}</p>
         </div>
       </div>
 
       <div className={styles.insights}>
-        <h3 className={styles.insightTitle}>Wellness is the new luxury</h3>
-        <p className={styles.insightText}>Descubre como el wellness se ha convertido en la maxima expresion de lujo moderno</p>
+        <h3 className={styles.insightTitle}>{dict.wellness.insightTitle}</h3>
+        <p className={styles.insightText}>{dict.wellness.insightText}</p>
 
         <div className={styles.articles}>
-          {ARTICLES.map((article) => (
+          {dict.wellness.articles.map((article, index) => (
             <a
               key={article.href}
               href={article.href}
@@ -60,7 +42,7 @@ export default function Wellness() {
             >
               <div className={styles.articlePreview}>
                 <Image
-                  src={article.image}
+                  src={ARTICLE_IMAGES[index]}
                   alt=""
                   fill
                   sizes="(max-width: 860px) 100vw, 50vw"
@@ -74,7 +56,7 @@ export default function Wellness() {
                 <p className={styles.articleDescription}>
                   {article.description}
                 </p>
-                <span className={styles.articleCta}>Leer articulo</span>
+                <span className={styles.articleCta}>{dict.wellness.readArticle}</span>
               </div>
             </a>
           ))}

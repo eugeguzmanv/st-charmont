@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useLocale } from "@/lib/i18n/LocaleProvider";
 import styles from "./ContactPopup.module.css";
 
 export default function ContactPopup() {
+  const { dict } = useLocale();
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
@@ -40,7 +42,7 @@ export default function ContactPopup() {
         type="button"
         className={styles.close}
         onClick={() => setDismissed(true)}
-        aria-label="Cerrar notificacion"
+        aria-label={dict.contactPopup.closeLabel}
       >
         <span aria-hidden="true">&times;</span>
       </button>
@@ -56,11 +58,11 @@ export default function ContactPopup() {
         />
         <div className={styles.copy}>
           <h3 id="contact-popup-title" className={styles.title}>
-            Queremos conocerte
+            {dict.contactPopup.title}
           </h3>
           <p id="contact-popup-body" className={styles.body}>
             <a href="#contacto" className={styles.link}>
-              Envíanos un mensaje y conoce tu nuevo estilo de vida.
+              {dict.contactPopup.body}
             </a>
           </p>
         </div>

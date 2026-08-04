@@ -1,14 +1,13 @@
+import type { Dictionary } from "@/lib/i18n/types";
 import styles from "./Legacy.module.css";
 
-export default function Legacy() {
+export default function Legacy({ dict }: { dict: Dictionary }) {
   return (
-    <section className={styles.legacy}>
+    <section id="legacy" className={styles.legacy}>
       <div className={styles.inner}>
-        <h2 className={styles.heading}>PERMANENCIA</h2>
-        <p className={styles.subheading}>Diseñado para trascender.</p>
-        <p className={styles.body}>
-        Algunas propiedades generan valor. Otras crean historia. St. Charmont ha sido concebido para convertirse en un referente de elegancia, bienestar y patrimonio en Yucatán; un destino admirado hoy y apreciado por generaciones.
-        </p>
+        <h2 className={styles.heading}>{dict.legacy.heading}</h2>
+        <p className={styles.subheading}>{dict.legacy.subheading}</p>
+        <p className={styles.body}>{dict.legacy.body}</p>
       </div>
     </section>
   );

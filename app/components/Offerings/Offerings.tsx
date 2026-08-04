@@ -1,46 +1,22 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLocale } from "@/lib/i18n/LocaleProvider";
+import type { OfferingTab } from "@/lib/i18n/types";
 import styles from "./Offerings.module.css";
 
-type TabId = "hotel" | "residences" | "spa";
-
-type Tab = {
-  id: TabId;
-  label: string;
-  title: string;
-  body: string;
-};
-
-const TABS: Tab[] = [
-  {
-    id: "hotel",
-    label: "Hotel",
-    title: "HOTEL",
-    body: "El hotel se integrará con  la  arquitectura original de la hacienda, para  crear un entorno único. Los jardines y los árboles centenarios serán los guardianes naturales de un espacio dedicado al bienestar profundo. La operación estará a cargo de una marca internacional de prestigio, asegurando una hospitalidad que se vive con la precisión y la calma de lo excepcional.",
-  },
-  {
-    id: "residences",
-    label: "Residences",
-    title: "BRANDED RESIDENCES",
-    body: "Una Branded Residence en St. Charmont representa la unión entre una residencia privada y la precisión operativa de una marca hotelera de prestigio. La propiedad se vive con la calma de lo permanente y con el respaldo de una hospitalidad que cuida cada detalle. El residente puede habitarla en cualquier momento o integrarla al programa de operación para generar rendimiento, siempre bajo los estándares más altos del mundo.",
-  },
-  {
-    id: "spa",
-    label: "Spa",
-    title: "SPA",
-    body: "El Spa, donde la ciencia contemporánea convive con rituales ancestrales. La arquitectura y los jardines crean un entorno que invita al cuerpo a renovarse y a la mente a descansar. Su operación estará a cargo de una firma reconocida entre las grandes casas de bienestar del mundo, asegurando tratamientos de última generación,  que acompañan la vida en su forma más profunda.",
-  },
-];
+type TabId = OfferingTab["id"];
 
 export default function Offerings() {
+  const { dict } = useLocale();
+  const tabs = dict.offerings.tabs;
   const [activeId, setActiveId] = useState<TabId>("hotel");
   const [slideDirection, setSlideDirection] = useState(0);
   const [indicator, setIndicator] = useState({ left: 0, width: 0 });
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const activeIndex = TABS.findIndex((tab) => tab.id === activeId);
+  const activeIndex = tabs.findIndex((tab) => tab.id === activeId);
 
   const updateIndicator = useCallback(() => {
     const menu = menuRef.current;
@@ -69,14 +45,18 @@ export default function Offerings() {
   };
 
   return (
-    <section className={styles.offerings} aria-label="Experiencias St. Charmont">
+    <section
+      id="offerings"
+      className={styles.offerings}
+      aria-label={dict.offerings.sectionLabel}
+    >
       <div className={styles.inner}>
         <div className={styles.menuWrap}>
           <div
             ref={menuRef}
             className={styles.menu}
             role="tablist"
-            aria-label="Experiencias"
+            aria-label={dict.offerings.tablistLabel}
           >
             <span
               className={styles.indicator}
@@ -86,7 +66,7 @@ export default function Offerings() {
               }}
               aria-hidden="true"
             />
-            {TABS.map((tab, index) => {
+            {tabs.map((tab, index) => {
               const selected = tab.id === activeId;
               return (
                 <button
@@ -111,7 +91,7 @@ export default function Offerings() {
         </div>
 
         <div className={styles.panelWrap}>
-          {TABS.map((tab) => {
+          {tabs.map((tab) => {
             const selected = tab.id === activeId;
             return (
               <article

@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useLocale } from "@/lib/i18n/LocaleProvider";
 import styles from "./Hero.module.css";
 import WaxSeal from "../WaxSeal/WaxSeal";
 
 export default function Hero() {
+  const { dict } = useLocale();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ export default function Hero() {
   return (
     <section
       className={`${styles.hero} ${open ? styles.open : ""}`}
-      aria-label="Bienvenida"
+      aria-label={dict.hero.ariaLabel}
     >
       <Image
         src="/images/background.jpeg"
@@ -39,13 +41,13 @@ export default function Hero() {
           type="button"
           className={styles.envelope}
           onClick={() => setOpen(true)}
-          aria-label="Abrir la invitacion"
+          aria-label={dict.hero.openLabel}
           aria-expanded={open}
         >
           <span className={styles.body} aria-hidden="true">
             <span className={styles.brand}>
               <span className={styles.brandName}>St. Charmont</span>
-              <span className={styles.brandSub}>Hotel Residences &amp; Spa</span>
+              <span className={styles.brandSub}>{dict.hero.brandSub}</span>
             </span>
           </span>
 
@@ -53,11 +55,11 @@ export default function Hero() {
 
           <span className={styles.flap} aria-hidden="true">
             <span className={styles.quote}>
-              La paz no se busca,
+              {dict.hero.quoteLine1}
               <br />
-              se encuentra dentro&hellip;
+              {dict.hero.quoteLine2}
             </span>
-            <span className={styles.quoteAuthor}>&mdash; Omar Salom&oacute;n</span>
+            <span className={styles.quoteAuthor}>{dict.hero.quoteAuthor}</span>
           </span>
 
           <WaxSeal open={open} />
@@ -66,7 +68,7 @@ export default function Hero() {
         <div className={styles.letter} aria-hidden={!open}>
           <Image
             src="/images/logo_hero2.png"
-            alt="St. Charmont"
+            alt={dict.hero.logoAlt}
             width={1920}
             height={1080}
             sizes="(max-width: 800px) 72vw, 420px"
@@ -82,20 +84,17 @@ export default function Hero() {
             className={styles.letterTextImg}
             aria-hidden="true"
           />
-          <p className={styles.letterText}>
-            Pensado exclusivamente para quienes valoran los detalles que
-            trascienden con el tiempo.
-          </p>
+          <p className={styles.letterText}>{dict.hero.letterText}</p>
         </div>
 
-        <p className={styles.prompt}>Toca para abrir</p>
+        <p className={styles.prompt}>{dict.hero.prompt}</p>
       </div>
 
       <button
         type="button"
         className={styles.scrollCue}
         onClick={handleScroll}
-        aria-label="Descubrir"
+        aria-label={dict.hero.discoverLabel}
       >
         <span className={styles.chevron} aria-hidden="true" />
         <span className={styles.chevron} aria-hidden="true" />

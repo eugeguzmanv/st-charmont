@@ -1,9 +1,11 @@
 import Image from "next/image";
+import { Fragment } from "react";
+import type { Dictionary } from "@/lib/i18n/types";
 import styles from "./Footer.module.css";
 
 const GRUPO_SALOMON_LOGO = "/images/GS-2 (1).png";
 
-export default function Footer() {
+export default function Footer({ dict }: { dict: Dictionary }) {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerHeader}>
@@ -11,7 +13,7 @@ export default function Footer() {
           <div className={styles.logoContainer}>
             <Image
               src="/images/STCHARMONT_MASTERBRAND B.png"
-              alt="St. Charmont Residences"
+              alt={dict.footer.logoAlt}
               width={2534}
               height={527}
               sizes="(max-width: 720px) 240px, 320px"
@@ -22,7 +24,7 @@ export default function Footer() {
           <div className={styles.socialIcons}>
             <a
               href="https://www.facebook.com/share/1Jqmhe5jFV/?mibextid=wwXIfr"
-              aria-label="Facebook"
+              aria-label={dict.footer.facebookLabel}
               className={styles.socialIcon}
               target="_blank"
               rel="noopener noreferrer"
@@ -31,7 +33,7 @@ export default function Footer() {
             </a>
             <a
               href="https://www.instagram.com/st.charmont/"
-              aria-label="Instagram"
+              aria-label={dict.footer.instagramLabel}
               className={styles.socialIcon}
               target="_blank"
               rel="noopener noreferrer"
@@ -42,18 +44,18 @@ export default function Footer() {
         </div>
 
         <div className={styles.headerProjectInfo}>
-          <p className={styles.projectLabel}>Un proyecto de</p>
-          <h3 className={styles.companyName}>GRUPO SALOMON PENINSULAR SAPI DE CV</h3>
+          <p className={styles.projectLabel}>{dict.footer.projectLabel}</p>
+          <h3 className={styles.companyName}>{dict.footer.companyName}</h3>
           <a
             href="https://gruposalomon.com/inicio/"
             className={styles.projectLogoLink}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Visitar Grupo Salomon"
+            aria-label={dict.footer.visitGrupoSalomon}
           >
             <Image
               src={GRUPO_SALOMON_LOGO}
-              alt="Grupo Salomon"
+              alt={dict.footer.grupoSalomonAlt}
               width={520}
               height={180}
               sizes="(max-width: 720px) 200px, 260px"
@@ -65,7 +67,7 @@ export default function Footer() {
 
       <div className={styles.mainContent}>
         <div className={styles.contactSection}>
-          <h4 className={styles.contactTitle}>Contactanos</h4>
+          <h4 className={styles.contactTitle}>{dict.footer.contactTitle}</h4>
 
           <div className={styles.hoursBlock}>
             <p className={styles.blockTitle}>
@@ -76,23 +78,15 @@ export default function Footer() {
                 height={18}
                 className={styles.iconStandard}
               />
-              Horarios de atencion:
+              {dict.footer.hoursLabel}
             </p>
             <div className={styles.hoursGrid}>
-              <span className={styles.dayLabel}>Lunes</span>
-              <span className={styles.dayTime}>9:00 a.m. - 6:00 p.m.</span>
-              <span className={styles.dayLabel}>Martes</span>
-              <span className={styles.dayTime}>9:00 a.m. - 6:00 p.m.</span>
-              <span className={styles.dayLabel}>Miercoles</span>
-              <span className={styles.dayTime}>9:00 a.m. - 6:00 p.m.</span>
-              <span className={styles.dayLabel}>Jueves</span>
-              <span className={styles.dayTime}>9:00 a.m. - 6:00 p.m.</span>
-              <span className={styles.dayLabel}>Viernes</span>
-              <span className={styles.dayTime}>9:00 a.m. - 6:00 p.m.</span>
-              <span className={styles.dayLabel}>Sabado</span>
-              <span className={styles.dayTime}>9:00 a.m. - 6:00 p.m.</span>
-              <span className={styles.dayLabel}>Domingo</span>
-              <span className={styles.dayTime}>Cerrado</span>
+              {dict.footer.days.map((entry) => (
+                <Fragment key={entry.day}>
+                  <span className={styles.dayLabel}>{entry.day}</span>
+                  <span className={styles.dayTime}>{entry.hours}</span>
+                </Fragment>
+              ))}
             </div>
           </div>
 
@@ -148,18 +142,17 @@ export default function Footer() {
               height={18}
               className={styles.iconStandard}
             />
-            <span>Calle 5 Num. 140 x 12 y 14 Frac. Residencial Montecristo</span>
+            <span>{dict.footer.address}</span>
           </div>
         </div>
       </div>
 
       <div className={styles.footerBottom}>
-        <p className={styles.disclaimer}>
-          Todos los precios, caracteristicas, apariencia o disponibilidad de las
-          propiedades estan sujetos a cambio sin previo aviso.
-        </p>
+        <p className={styles.disclaimer}>{dict.footer.disclaimer}</p>
         <div className={styles.rights}>
-          <span>&copy; St. Charmont {new Date().getFullYear()}. All rights reserved.</span>
+          <span>
+            &copy; St. Charmont {new Date().getFullYear()}. {dict.footer.rights}
+          </span>
         </div>
       </div>
     </footer>

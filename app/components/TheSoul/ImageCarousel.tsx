@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useLocale } from "@/lib/i18n/LocaleProvider";
 import styles from "./ImageCarousel.module.css";
 
 const CAROUSEL_IMAGES = [
@@ -22,6 +23,8 @@ const CAROUSEL_IMAGES = [
 ] as const;
 
 export default function ImageCarousel() {
+  const { dict } = useLocale();
+  const carousel = dict.soul.carousel;
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const total = CAROUSEL_IMAGES.length;
@@ -39,13 +42,17 @@ export default function ImageCarousel() {
     setIndex(((next % total) + total) % total);
   };
 
+  const slideStatus = carousel.slideStatus
+    .replace("{current}", String(index + 1))
+    .replace("{total}", String(total));
+
   return (
     <div
       className={styles.carousel}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-roledescription="carousel"
-      aria-label="Galeria de la hacienda"
+      aria-label={carousel.label}
     >
       <div className={styles.frame}>
         {CAROUSEL_IMAGES.map((image, i) => (
@@ -56,7 +63,7 @@ export default function ImageCarousel() {
           >
             <Image
               src={image.src}
-              alt={`Vista de St. Charmont ${i + 1}`}
+              alt={carousel.slideAlt.replace("{number}", String(i + 1))}
               width={image.width}
               height={image.height}
               sizes="(max-width: 860px) 100vw, 40vw"
@@ -71,7 +78,7 @@ export default function ImageCarousel() {
         type="button"
         className={`${styles.nav} ${styles.prev}`}
         onClick={() => goTo(index - 1)}
-        aria-label="Imagen anterior"
+        aria-label={carousel.prev}
       >
         <span aria-hidden="true" />
       </button>
@@ -79,19 +86,19 @@ export default function ImageCarousel() {
         type="button"
         className={`${styles.nav} ${styles.next}`}
         onClick={() => goTo(index + 1)}
-        aria-label="Imagen siguiente"
+        aria-label={carousel.next}
       >
         <span aria-hidden="true" />
       </button>
 
-      <div className={styles.dots} role="tablist" aria-label="Seleccionar imagen">
+      <div className={styles.dots} role="tablist" aria-label={carousel.select}>
         {CAROUSEL_IMAGES.map((image, i) => (
           <button
             key={image.src}
             type="button"
             role="tab"
             aria-selected={i === index}
-            aria-label={`Ir a la imagen ${i + 1}`}
+            aria-label={`${carousel.goTo} ${i + 1}`}
             className={`${styles.dot} ${i === index ? styles.dotActive : ""}`}
             onClick={() => goTo(i)}
           />
@@ -99,7 +106,7 @@ export default function ImageCarousel() {
       </div>
 
       <span className={styles.srOnly}>
-        Imagen {index + 1} de {total}: {current.src}
+        {slideStatus}: {current.src}
       </span>
     </div>
   );
